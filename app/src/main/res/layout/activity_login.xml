@@ -61,6 +61,29 @@
                     android:inputType="textPassword"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputAccountName"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                    android:id="@+id/editTextLoginAccountType"
+                    style="@style/modifiedEditText"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:maxLines="1"
+                    android:focusable="false"
+                    android:hint="Account Type"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <CheckBox
+                android:id="@+id/ch_rememberme"
+                style="@style/viewParent"
+                android:text="Remember Me"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/newsMoreTextSize"
+                android:textColor="@color/primaryTextColor"
+
+                />
 
             <Button
                 android:id="@+id/cirLoginButton"

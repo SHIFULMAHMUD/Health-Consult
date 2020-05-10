@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -142,11 +143,12 @@ public class RegisterActivity extends AppCompatActivity {
         //Getting values from edit texts
         final String name = nameET.getText().toString().trim();
         final String cell = mobileET.getText().toString().trim();
+        final String account_type = actypeET.getText().toString().trim();
         final String email = emailET.getText().toString().trim();
         final String gender = genderET.getText().toString().trim();
         final String password = passwordET.getText().toString().trim();
-        final String account_type = actypeET.getText().toString().trim();
-        final String status="Pending";
+
+
 
 
         //Checking  field/validation
@@ -154,6 +156,13 @@ public class RegisterActivity extends AppCompatActivity {
             nameET.setError("Please enter name !");
             requestFocus(nameET);
         }
+        else if (cell.isEmpty()) {
+
+            mobileET.setError("Please enter phone number !");
+            requestFocus(mobileET);
+
+        }
+
         else if (cell.length()!=11) {
 
             mobileET.setError("Please enter valid phone number !");
@@ -202,17 +211,16 @@ public class RegisterActivity extends AppCompatActivity {
             loading.setMessage("Please wait....");
             loading.show();
 
-
-            StringRequest stringRequest=new StringRequest(Request.Method.POST, Constant.SIGNUP_URL, new Response.Listener<String>() {
+            final StringRequest stringRequest=new StringRequest(Request.Method.POST, Constant.SIGNUP_URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
                     //for track response in logcat
-                    Log.d("RESPONSE", response);
 
                     if (response.equals("success")) {
                         loading.dismiss();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        Log.d("res", response);
                         Toasty.success(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     } else if (response.equals("exists")) {
@@ -247,11 +255,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                     params.put(Constant.KEY_NAME, name);
                     params.put(Constant.KEY_CELL, cell);
-                    params.put(Constant.KEY_DIV, email);
-                    params.put(Constant.KEY_ADDRESS, gender);
                     params.put(Constant.KEY_AC_TYPE, account_type);
+                    params.put(Constant.KEY_GENDER, gender);
+                    params.put(Constant.KEY_EMAIL, email);
                     params.put(Constant.KEY_PASSWORD, password);
-                    params.put(Constant.KEY_STATUS, status);
+
 
                     Log.d("url_info",Constant.SIGNUP_URL);
 
