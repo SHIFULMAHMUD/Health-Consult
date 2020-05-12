@@ -8,7 +8,11 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#2661FA</color>
     <color name="loginBkColor">#f0f0f0</color>
-
+    <color name="profileAccentColor">#F7F7F7</color>
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+
+    <color name="black">#000</color>
+    <color name="lightorange">#fdf2df</color>
+    <color name="lightorangedark">#ebd6ab</color>
 </resources>

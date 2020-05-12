@@ -32,54 +32,92 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputEmail"
-                style="@style/parent"
-                android:layout_marginTop="130dp">
-
-                <EditText
-                    android:id="@+id/editTextLoginPhone"
-                    style="@style/modifiedEditText"
-                    android:layout_marginRight="10dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="130dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:hint="@string/login_mobile_number_hint"
-                    android:inputType="phone"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:id="@+id/image_cell"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_phone_purple_24dp"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputEmail"
+                    style="@style/parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputPassword"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
+                    <EditText
+                        android:id="@+id/editTextLoginPhone"
+                        style="@style/modifiedEditText"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/login_mobile_number_hint"
+                        android:inputType="phone"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editTextLoginPassword"
-                    style="@style/modifiedEditText"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:hint="@string/login_password_hint"
-                    android:inputType="textPassword"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAccountName"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
-                <EditText
-                    android:id="@+id/editTextLoginAccountType"
-                    style="@style/modifiedEditText"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:maxLines="1"
-                    android:focusable="false"
-                    android:hint="Account Type"/>
-            </com.google.android.material.textfield.TextInputLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_dialpad_purple_24dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPassword"
+        style="@style/parent"
+        app:passwordToggleEnabled="true"
+        android:layout_marginTop="@dimen/loginViewsMargin">
+
+        <EditText
+            android:id="@+id/editTextLoginPassword"
+            style="@style/modifiedEditText"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/login_password_hint"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/image_account"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/ic_account_purple_black_24dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputAccountName"
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                android:id="@+id/editTextLoginAccountType"
+                style="@style/modifiedEditText"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:maxLines="1"
+                android:focusable="false"
+                android:hint="Account Type"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
             <CheckBox
                 android:id="@+id/ch_rememberme"
                 style="@style/viewParent"
                 android:text="Remember Me"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
+                android:textStyle="bold"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:textColor="@color/primaryTextColor"
 

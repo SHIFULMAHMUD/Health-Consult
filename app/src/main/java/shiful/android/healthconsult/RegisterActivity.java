@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         actypeET=findViewById(R.id.editTextRegisterAccountType);
@@ -216,21 +217,21 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(String response) {
 
                     //for track response in logcat
-
-                    if (response.equals("success")) {
+                    Log.d("res", response);
+                    if (response.trim().equals("success")) {
                         loading.dismiss();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        Log.d("res", response);
                         Toasty.success(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
-                    } else if (response.equals("exists")) {
+                        finish();
+                    } else if (response.trim().equals("exists")) {
 
                         Toasty.warning(RegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
 
-                    else if (response.equals("failure")) {
+                    else if (response.trim().equals("failure")) {
 
                         Toasty.error(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();

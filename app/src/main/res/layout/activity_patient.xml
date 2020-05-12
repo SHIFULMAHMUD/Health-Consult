@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".PatientActivity">
+    tools:context=".patient.PatientActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -274,7 +274,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:id="@+id/logout_cv"
+                    android:id="@+id/patient_logout_cv"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginLeft="5dp"

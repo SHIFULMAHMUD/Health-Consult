@@ -2,6 +2,8 @@ package shiful.android.healthconsult;
 
 import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
+import shiful.android.healthconsult.doctor.DoctorActivity;
+import shiful.android.healthconsult.patient.PatientActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -38,8 +40,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     TextView goto_signup_tv;
     Button signinBtn;
     EditText mobileEt,passwordEt,ac_typeEt;
-    String text,checkusertext;
-    String getCell;
+    String text,getCell;
     //ProgressDialog object declaration
     private ProgressDialog loading;
     private static long back_pressed;
@@ -65,6 +66,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                 startActivity(intent);
             }
         });
+
+        //Fetching cell from shared preferences
+        SharedPreferences sharedPreferences;
+        sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
+
         rem_userpass=findViewById(R.id.ch_rememberme);
         signinBtn=findViewById(R.id.cirLoginButton);
         mobileEt=findViewById(R.id.editTextLoginPhone);
@@ -109,6 +116,20 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             }
 
         });
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        if (sharedPreferences.getBoolean(KEY_REMEMBER, false))
+            rem_userpass.setChecked(true);
+        else
+            rem_userpass.setChecked(false);
+
+        mobileEt.setText(sharedPreferences.getString(KEY_USERCELL, ""));
+        passwordEt.setText(sharedPreferences.getString(KEY_PASS, ""));
+
+        mobileEt.addTextChangedListener(this);
+        passwordEt.addTextChangedListener(this);
+        rem_userpass.setOnCheckedChangeListener(this);
         //Click listener in LoginActivity Button
         signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +143,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     }
     //LoginActivity function
     private void AppSingleton() {
+
         //Getting values from edit texts
         final String cell = mobileEt.getText().toString().trim();
         final String password = passwordEt.getText().toString().trim();
@@ -176,7 +198,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
 
                             Log.d("response",""+response);
                             //If we are getting success from server
-                            if (response.equals("success")) {
+                            if (response.trim().equals("success")) {
                                 //Creating a shared preference
 
                                 SharedPreferences sp = LoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -189,7 +211,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                 //Saving values to editor
                                 editor.commit();
                                 //Starting Home activity
-Log.d("text",text);
+
                                 if (text.equals("Doctor"))
                                 {
                                     Intent intent = new Intent(LoginActivity.this, DoctorActivity.class);
@@ -211,7 +233,7 @@ Log.d("text",text);
                                 loading.dismiss();
                             }
 
-                            else if(response.equals("failure")) {
+                            else if(response.trim().equals("failure")) {
                                 //If the server response is not success
                                 //Displaying an error message on toast
                                 Toasty.error(LoginActivity.this, "Invalid Login", Toast.LENGTH_SHORT).show();
@@ -293,8 +315,8 @@ Log.d("text",text);
             editor.apply();
         }else{
             editor.putBoolean(KEY_REMEMBER, false);
-            editor.remove(KEY_PASS);//editor.putString(KEY_PASS,"");
-            editor.remove(KEY_USERCELL);//editor.putString(KEY_USERCELL, "");
+            editor.remove(KEY_PASS);
+            editor.remove(KEY_USERCELL);
             editor.apply();
         }
     }
