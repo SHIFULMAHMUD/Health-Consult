@@ -48,9 +48,10 @@ public class ViewDoctorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_doctor);
         CustomList=(ListView)findViewById(R.id.doctor_list);
+        get_category_id = getIntent().getExtras().getString("id");
         //call function to get data
         getData("");
-        get_category_id = getIntent().getExtras().getString("id");
+
     }
     private void getData(String text) {
 
@@ -61,7 +62,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
         loading.setMessage("Please wait....");
         loading.show();
 
-        String URL = Constant.DOCTOR_URL+"&text="+text;
+        String URL = Constant.DOCTOR_URL+get_category_id;
         Log.d("url",URL);
 
         StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
@@ -117,9 +118,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
 
                     //insert data into array for put extra
 
-                    catId[i] = cat_id;
-                    if (get_category_id.equals(catId[i])){
-
+                        catId[i] = cat_id;
                         docName[i] = doc_name;
                         docQualification[i] = qualification;
                         docDesignation[i] = designation;
@@ -138,7 +137,6 @@ public class ViewDoctorActivity extends AppCompatActivity {
                     list.add(doctor_data);
                     }
                 }
-            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

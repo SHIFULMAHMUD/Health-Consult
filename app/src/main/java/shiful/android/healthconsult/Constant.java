@@ -8,7 +8,7 @@ public class Constant {
     public static final String USER_VIEW_URL = MAIN_URL+"/view_user.php?cell=";
     public static final String UPDATE_PROFILE_URL = MAIN_URL+"/update_profile.php";
     public static final String CATEGORY_URL = MAIN_URL+"/category.php?";
-    public static final String DOCTOR_URL = MAIN_URL+"/doctor.php?";
+    public static final String DOCTOR_URL = MAIN_URL+"/doctor.php?category_id=";
 
     //Keys for server communications
 
