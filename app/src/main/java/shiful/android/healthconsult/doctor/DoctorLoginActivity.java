@@ -1,9 +1,12 @@
-package shiful.android.healthconsult;
+package shiful.android.healthconsult.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
-import shiful.android.healthconsult.doctor.DoctorActivity;
+import shiful.android.healthconsult.Constant;
+import shiful.android.healthconsult.R;
 import shiful.android.healthconsult.patient.PatientActivity;
+import shiful.android.healthconsult.patient.PatientLoginActivity;
+import shiful.android.healthconsult.patient.PatientRegisterActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -35,12 +38,12 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity implements TextWatcher,
+public class DoctorLoginActivity extends AppCompatActivity implements TextWatcher,
         CompoundButton.OnCheckedChangeListener{
     TextView goto_signup_tv;
     Button signinBtn;
-    EditText mobileEt,passwordEt,ac_typeEt;
-    String text,getCell;
+    EditText mobileEt,passwordEt;
+    String getCell;
     //ProgressDialog object declaration
     private ProgressDialog loading;
     private static long back_pressed;
@@ -57,12 +60,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        goto_signup_tv=findViewById(R.id.goto_signup_text);
+        setContentView(R.layout.activity_doctor_login);
+        goto_signup_tv=findViewById(R.id.goto_doc_signup_text);
         goto_signup_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent=new Intent(DoctorLoginActivity.this, DoctorRegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -72,50 +75,11 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
         sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
 
-        rem_userpass=findViewById(R.id.ch_rememberme);
-        signinBtn=findViewById(R.id.cirLoginButton);
-        mobileEt=findViewById(R.id.editTextLoginPhone);
-        passwordEt=findViewById(R.id.editTextLoginPassword);
-        ac_typeEt=findViewById(R.id.editTextLoginAccountType);
-        ac_typeEt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        rem_userpass=findViewById(R.id.doc_ch_rememberme);
+        signinBtn=findViewById(R.id.cirDocLoginButton);
+        mobileEt=findViewById(R.id.editTextDocLoginPhone);
+        passwordEt=findViewById(R.id.editTextDocLoginPassword);
 
-                final String[] accountList = {"Doctor", "Patient"};
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                builder.setTitle("Choose Account Type");
-                builder.setCancelable(false);
-                builder.setItems(accountList, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        switch (position) {
-                            case 0:
-                                ac_typeEt.setText(accountList[position]);
-                                text=accountList[position];
-                                break;
-
-                            case 1:
-                                ac_typeEt.setText(accountList[position]);
-                                text=accountList[position];
-                                break;
-                        }
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog accountTypeDialog = builder.create();
-
-                accountTypeDialog.show();
-            }
-
-        });
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -147,11 +111,9 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
         //Getting values from edit texts
         final String cell = mobileEt.getText().toString().trim();
         final String password = passwordEt.getText().toString().trim();
-        final String ac_type = ac_typeEt.getText().toString().trim();
-
 
         //Checking usercell field/validation
-       if (cell.isEmpty()) {
+        if (cell.isEmpty()) {
 
             mobileEt.setError("Please enter phone number !");
             requestFocus(mobileEt);
@@ -164,21 +126,15 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             requestFocus(mobileEt);
 
         }
-       else if (password.isEmpty()) {
+        else if (password.isEmpty()) {
 
-           passwordEt.setError("Please enter password !");
-           requestFocus(passwordEt);
-       }
-       else if (password.length() < 4) {
+            passwordEt.setError("Please enter password !");
+            requestFocus(passwordEt);
+        }
+        else if (password.length() < 4) {
 
-           passwordEt.setError("Password should be more than 3 characters!");
-           requestFocus(passwordEt);
-       }
-        else if (ac_type.isEmpty()) {
-
-            ac_typeEt.setError("Please select account type !");
-            requestFocus(ac_typeEt);
-            Toasty.error(this, "Please select account type !", Toast.LENGTH_SHORT).show();
+            passwordEt.setError("Password should be more than 3 characters!");
+            requestFocus(passwordEt);
         }
         //showing progress dialog
 
@@ -191,7 +147,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
             loading.show();
 
             //Creating a string request
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.LOGIN_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.DOC_LOGIN_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -201,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                             if (response.trim().equals("success")) {
                                 //Creating a shared preference
 
-                                SharedPreferences sp = LoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                                SharedPreferences sp = DoctorLoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
                                 //Creating editor to store values to shared preferences
                                 SharedPreferences.Editor editor = sp.edit();
@@ -211,39 +167,24 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                                 //Saving values to editor
                                 editor.commit();
                                 //Starting Home activity
-
-                                if (text.equals("Doctor"))
-                                {
-                                    Intent intent = new Intent(LoginActivity.this, DoctorActivity.class);
+                                    Intent intent = new Intent(DoctorLoginActivity.this, DoctorActivity.class);
                                     startActivity(intent);
                                     finish();
-                                    Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-
-                                }
-                                if (text.equals("Patient"))
-                                {
-                                    Intent intent = new Intent(LoginActivity.this, PatientActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    Toasty.success(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-                                }
-
-                                loading.dismiss();
+                                    Toasty.success(DoctorLoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    loading.dismiss();
                             }
 
                             else if(response.trim().equals("failure")) {
                                 //If the server response is not success
                                 //Displaying an error message on toast
-                                Toasty.error(LoginActivity.this, "Invalid Login", Toast.LENGTH_SHORT).show();
+                                Toasty.error(DoctorLoginActivity.this, "Invalid Login", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
                             }
 
                             else {
                                 //If the server response is not success
                                 //Displaying an error message on toast
-                                Toasty.error(LoginActivity.this, "Invalid user cell or password", Toast.LENGTH_SHORT).show();
+                                Toasty.error(DoctorLoginActivity.this, "Invalid user cell or password", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
                             }
                         }
@@ -254,7 +195,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                         public void onErrorResponse(VolleyError error) {
                             //You can handle error here if you want
 
-                            Toasty.error(LoginActivity.this, "There is an error !!!", Toast.LENGTH_SHORT).show();
+                            Toasty.error(DoctorLoginActivity.this, "There is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }) {
@@ -265,8 +206,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,
                     //Adding parameters to request
                     params.put(Constant.KEY_CELL, cell);
                     params.put(Constant.KEY_PASSWORD, password);
-                    params.put(Constant.KEY_AC_TYPE,ac_type);
-
                     //returning parameter
                     return params;
                 }

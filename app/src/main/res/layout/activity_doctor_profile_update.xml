@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    tools:context=".doctor.DoctorProfileUpdateActivity"
+android:background="#D3D3D3"
+android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_account"
+                android:src="@drawable/ic_person_black_24dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_account">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:id="@+id/heading_update_name"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:paddingLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_category"
+                android:src="@drawable/tool"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_category">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:hint="Specialist"
+                    android:inputType="text"
+                    android:focusable="false"
+                    android:textStyle="bold"
+                    android:id="@+id/heading_update_category"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:paddingLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_qualification"
+                android:src="@drawable/graduation"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_qualification">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:hint="Qualification"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:id="@+id/heading_update_qualification"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:paddingLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_designation"
+                android:src="@drawable/tool"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_designation">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:hint="Designation"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:id="@+id/heading_update_designation"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:paddingLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_mail"
+                android:src="@drawable/ic_email_black_24dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_mail">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textStyle="bold"
+                    android:id="@+id/heading_update_mail"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_cell"
+                android:src="@drawable/ic_dialpad_black_24dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                app:passwordToggleEnabled="true"
+                android:layout_toRightOf="@+id/image_cell">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:hint="@string/login_password_hint"
+                    android:inputType="textPassword"
+                    android:textStyle="bold"
+                    android:id="@+id/heading_update_pass"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_gender"
+                android:src="@drawable/ic_wc_black_24dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_gender">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:focusable="false"
+                    android:hint="Gender"
+                    android:id="@+id/heading_update_gender"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_location"
+                android:src="@drawable/ic_location_on_black_24dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_location">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:hint="Location"
+                    android:id="@+id/heading_update_location"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/image_visit"
+                android:src="@drawable/taka"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_toRightOf="@+id/image_visit">
+
+                <EditText
+                    style="@style/modifiedEditText"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:hint="Visit Cost (Tk)"
+                    android:id="@+id/heading_visit"
+                    android:paddingLeft="30dp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:textColor="#fff"
+        android:background="@drawable/buttonstyle"
+        android:layout_marginTop="50dp"
+        android:padding="0dp"
+        android:id="@+id/doc_profile_update_button"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        />
+</LinearLayout>
+
+
+</ScrollView>

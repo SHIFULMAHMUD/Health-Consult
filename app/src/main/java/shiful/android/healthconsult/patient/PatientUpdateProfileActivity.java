@@ -1,7 +1,9 @@
-package shiful.android.healthconsult;
+package shiful.android.healthconsult.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
+import shiful.android.healthconsult.Constant;
+import shiful.android.healthconsult.R;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -29,7 +31,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateProfileActivity extends AppCompatActivity {
+public class PatientUpdateProfileActivity extends AppCompatActivity {
     String getCell,getName,getEmail,getPassword,getGender;
     EditText update_NameEt,update_emailET,update_passwordEt,update_genderEt;
     private ProgressDialog loading;
@@ -68,7 +70,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                 final String[] genderList = {"Male", "Female"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfileActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(PatientUpdateProfileActivity.this);
                 builder.setTitle("Select Gender");
                 builder.setCancelable(false);
                 builder.setItems(genderList, new DialogInterface.OnClickListener() {
@@ -137,7 +139,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         else if (gender.isEmpty()) {
             update_genderEt.setError("Please select gender !");
             requestFocus(update_genderEt);
-            Toasty.error(UpdateProfileActivity.this, "Please select gender !", Toast.LENGTH_SHORT).show();
+            Toasty.error(PatientUpdateProfileActivity.this, "Please select gender !", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -157,14 +159,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                     if (response.trim().equals("success")) {
                         loading.dismiss();
-                        Intent intent = new Intent(UpdateProfileActivity.this, ProfileActivity.class);
-                        Toasty.success(UpdateProfileActivity.this, "Information Updated", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(PatientUpdateProfileActivity.this, PatientProfileActivity.class);
+                        Toasty.success(PatientUpdateProfileActivity.this, "Information Updated", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
+                        finish();
                     }
 
                     else if (response.trim().equals("failure")) {
 
-                        Toasty.error(UpdateProfileActivity.this, "Update Failed!", Toast.LENGTH_SHORT).show();
+                        Toasty.error(PatientUpdateProfileActivity.this, "Update Failed!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
@@ -174,7 +177,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            Toasty.error(UpdateProfileActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
+                            Toasty.error(PatientUpdateProfileActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }

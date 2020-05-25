@@ -1,4 +1,4 @@
-package shiful.android.healthconsult.patient;
+package shiful.android.healthconsult.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
@@ -6,7 +6,9 @@ import shiful.android.healthconsult.Constant;
 import shiful.android.healthconsult.R;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -32,32 +34,47 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CategoryActivity extends AppCompatActivity {
+public class AppointmentActivity extends AppCompatActivity {
     ListView CustomList;
     private ProgressDialog loading;
+    Button btnSearch;
+    EditText txtSearch;
+    String getCell;
     int MAX_SIZE=999;
-    public String categoryId[]=new String[MAX_SIZE];
-    public String categoryName[]=new String[MAX_SIZE];
+
+    public String patientName[]=new String[MAX_SIZE];
+    public String patientCell[]=new String[MAX_SIZE];
+    public String patientGender[]=new String[MAX_SIZE];
+    public String patientEmail[]=new String[MAX_SIZE];
+    public String patientRequest[]=new String[MAX_SIZE];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
-        CustomList=(ListView)findViewById(R.id.category_list);
+        setContentView(R.layout.activity_appointment);
+        CustomList=(ListView)findViewById(R.id.patient_list);
+        //Fetching cell from shared preferences
+        SharedPreferences sharedPreferences;
+        sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        getCell = sharedPreferences.getString(Constant.CELL_SHARED_PREF, "Not Available");
+
         //call function to get data
         getData("");
+
     }
+
+
     private void getData(String text) {
 
         //for showing progress dialog
-        loading = new ProgressDialog(CategoryActivity.this);
+        loading = new ProgressDialog(AppointmentActivity.this);
         loading.setIcon(R.drawable.wait_icon);
         loading.setTitle("Loading");
         loading.setMessage("Please wait....");
         loading.show();
 
-        String URL = Constant.CATEGORY_URL+"&text="+text;
-        Log.d("url",URL);
+        String URL = Constant.PATIENT_VIEW_URL+getCell;
+        Log.d("patient_url",URL);
 
         StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
             @Override
@@ -71,11 +88,11 @@ public class CategoryActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         loading.dismiss();
-                        Toasty.error(CategoryActivity.this, "Network Error!", Toast.LENGTH_SHORT).show();
+                        Toasty.error(AppointmentActivity.this, "Network Error!", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(CategoryActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(AppointmentActivity.this);
         requestQueue.add(stringRequest);
 
     }
@@ -94,7 +111,7 @@ public class CategoryActivity extends AppCompatActivity {
 
             if (result.length()==0)
             {
-                Toasty.info(CategoryActivity.this, "No Data Available!", Toast.LENGTH_SHORT).show();
+                Toasty.info(AppointmentActivity.this, "No Data Available!", Toast.LENGTH_SHORT).show();
             }
 
             else {
@@ -102,16 +119,30 @@ public class CategoryActivity extends AppCompatActivity {
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject jo = result.getJSONObject(i);
 
-                    String id = jo.getString(Constant.KEY_CAT_ID);
-                    String name = jo.getString(Constant.KEY_CATEGORY_NAME);
+                    String name = jo.getString(Constant.KEY_NAME);
+                    String gender = jo.getString(Constant.KEY_GENDER);
+                    String cell = jo.getString(Constant.KEY_CELL);
+                    String email = jo.getString(Constant.KEY_EMAIL);
+                    String request = jo.getString(Constant.KEY_PATIENT_REQ);
+
                     //insert data into array for put extra
-                    categoryId[i]=id;
-                    categoryName[i] = name;
+
+                    patientName[i] = name;
+                    patientGender[i] = gender;
+                    patientCell[i] = cell;
+                    patientEmail[i] = email;
+                    patientRequest[i] = request;
+
 
                     //put value into Hashmap
-                    HashMap<String, String> category_data = new HashMap<>();
-                    category_data.put(Constant.KEY_CATEGORY_NAME, name);
-                    list.add(category_data);
+                    HashMap<String, String> patient_data = new HashMap<>();
+                    patient_data.put(Constant.KEY_NAME, name);
+                    patient_data.put(Constant.KEY_GENDER, gender);
+                    patient_data.put(Constant.KEY_CELL, cell);
+                    patient_data.put(Constant.KEY_EMAIL, email);
+                    patient_data.put(Constant.KEY_PATIENT_REQ, request);
+
+                    list.add(patient_data);
                 }
             }
         } catch (JSONException e) {
@@ -119,18 +150,22 @@ public class CategoryActivity extends AppCompatActivity {
         }
 
         ListAdapter adapter = new SimpleAdapter(
-                CategoryActivity.this, list, R.layout.category_list_items,
-                new String[]{Constant.KEY_CATEGORY_NAME},
-                new int[]{R.id.txt_category_name});
+                AppointmentActivity.this, list, R.layout.patient_list_items,
+                new String[]{Constant.KEY_NAME, Constant.KEY_PATIENT_REQ},
+                new int[]{R.id.txt_patient_name, R.id.txt_request});
         CustomList.setAdapter(adapter);
 
         CustomList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                        Intent intent = new Intent(CategoryActivity.this, ViewDoctorActivity.class);
-                        intent.putExtra("name",categoryName[position]);
-                        startActivity(intent);
+
+                Intent intent=new Intent(AppointmentActivity.this, AppointmentDetailsActivity.class);
+                intent.putExtra("name",patientName[position]);
+                intent.putExtra("cell",patientCell[position]);
+                intent.putExtra("email",patientEmail[position]);
+                intent.putExtra("gender",patientGender[position]);
+                startActivity(intent);
 
             }
         });

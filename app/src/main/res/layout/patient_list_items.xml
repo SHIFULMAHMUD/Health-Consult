@@ -4,78 +4,72 @@ android:layout_width="match_parent"
 android:id="@+id/relative_list"
 android:padding="10dp"
 android:layout_height="wrap_content">
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="80dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
+    android:id="@+id/firstLayout">
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/list_icon"
+        android:src="@drawable/man"/>
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/zeroLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/firstLayout"
+        android:id="@+id/fourthLayout"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="0.5"
+            android:layout_weight="0.8"
             android:layout_gravity="center"
-            android:text="Name:"
+            android:text="Patient Name:"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/txt_doc_name"
+            android:id="@+id/txt_patient_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:layout_weight="1"
-            android:textStyle="bold"
             android:layout_gravity="center"
+            android:textStyle="bold"
             android:textSize="16sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/firstLayout"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/zeroLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/fifthLayout"
+        android:layout_toRightOf="@+id/firstLayout"
+        android:layout_below="@+id/fourthLayout"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="0.5"
+            android:layout_weight="0.8"
             android:layout_gravity="center"
-            android:text="Designation:"
+            android:text="Appointment:"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/txt_doc_designation"
+            android:id="@+id/txt_request"
             android:layout_width="0dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/secondLayout"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/firstLayout"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_weight="0.5"
-            android:layout_gravity="center"
-            android:text="Qualification:"
-            android:textSize="16sp" />
-        <TextView
-            android:id="@+id/txt_doc_qualification"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:layout_gravity="center"
             android:textSize="16sp" />
     </LinearLayout>
 </RelativeLayout>

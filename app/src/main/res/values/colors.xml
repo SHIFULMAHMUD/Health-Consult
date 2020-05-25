@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#6200EE</color>
+    <color name="colorAccent">#4bb6ef</color>
 
-    <!--colors for modern ui-->
+    <!--colors for modern ui-->z
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#2661FA</color>
     <color name="loginBkColor">#f0f0f0</color>
@@ -15,4 +15,7 @@
     <color name="black">#000</color>
     <color name="lightorange">#fdf2df</color>
     <color name="lightorangedark">#ebd6ab</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparentWhite">#BBBBBB</color>
 </resources>

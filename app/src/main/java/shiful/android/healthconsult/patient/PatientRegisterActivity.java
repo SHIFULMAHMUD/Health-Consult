@@ -1,7 +1,9 @@
-package shiful.android.healthconsult;
+package shiful.android.healthconsult.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
+import shiful.android.healthconsult.Constant;
+import shiful.android.healthconsult.R;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -13,7 +15,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +29,10 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity {
+public class PatientRegisterActivity extends AppCompatActivity {
     TextView goto_login_tv;
     Button signupBtn;
-    EditText actypeET,genderET,nameET,mobileET,emailET,passwordET;
+    EditText genderET,nameET,mobileET,emailET,passwordET;
     ProgressDialog loading;
     private static long back_pressed;
     private static final int TIME_DELAY = 2000;
@@ -56,50 +57,12 @@ public class RegisterActivity extends AppCompatActivity {
         goto_login_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent intent=new Intent(PatientRegisterActivity.this, PatientLoginActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
-        actypeET=findViewById(R.id.editTextRegisterAccountType);
-//For choosing account type and open alert dialog
-        actypeET.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                final String[] accountList = {"Doctor", "Patient"};
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                builder.setTitle("Choose Account Type");
-                builder.setCancelable(false);
-                builder.setItems(accountList, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        switch (position) {
-                            case 0:
-                                actypeET.setText(accountList[position]);
-                                break;
-
-                            case 1:
-                                actypeET.setText(accountList[position]);
-                                break;
-                        }
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog accountTypeDialog = builder.create();
-
-                accountTypeDialog.show();
-            }
-
-        });
         genderET=findViewById(R.id.editTextRegisterGender);
         genderET.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 final String[] genderList = {"Male", "Female"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(PatientRegisterActivity.this);
                 builder.setTitle("Select Gender");
                 builder.setCancelable(false);
                 builder.setItems(genderList, new DialogInterface.OnClickListener() {
@@ -144,7 +107,6 @@ public class RegisterActivity extends AppCompatActivity {
         //Getting values from edit texts
         final String name = nameET.getText().toString().trim();
         final String cell = mobileET.getText().toString().trim();
-        final String account_type = actypeET.getText().toString().trim();
         final String email = emailET.getText().toString().trim();
         final String gender = genderET.getText().toString().trim();
         final String password = passwordET.getText().toString().trim();
@@ -170,12 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
             requestFocus(mobileET);
 
         }
-        else if (account_type.isEmpty()) {
 
-            actypeET.setError("Please select account type !");
-            requestFocus(actypeET);
-            Toasty.error(this, "Please select account type !", Toast.LENGTH_SHORT).show();
-        }
         else if (gender.isEmpty()) {
 
             genderET.setError("Please select your gender !");
@@ -220,20 +177,20 @@ public class RegisterActivity extends AppCompatActivity {
                     Log.d("res", response);
                     if (response.trim().equals("success")) {
                         loading.dismiss();
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        Toasty.success(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(PatientRegisterActivity.this, PatientLoginActivity.class);
+                        Toasty.success(PatientRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                         finish();
                     } else if (response.trim().equals("exists")) {
 
-                        Toasty.warning(RegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
+                        Toasty.warning(PatientRegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
 
                     else if (response.trim().equals("failure")) {
 
-                        Toasty.error(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
+                        Toasty.error(PatientRegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
                         loading.dismiss();
 
                     }
@@ -243,7 +200,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            Toasty.error(RegisterActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
+                            Toasty.error(PatientRegisterActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }
@@ -256,7 +213,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                     params.put(Constant.KEY_NAME, name);
                     params.put(Constant.KEY_CELL, cell);
-                    params.put(Constant.KEY_AC_TYPE, account_type);
                     params.put(Constant.KEY_GENDER, gender);
                     params.put(Constant.KEY_EMAIL, email);
                     params.put(Constant.KEY_PASSWORD, password);

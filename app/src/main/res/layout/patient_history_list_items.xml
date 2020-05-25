@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/relative_list"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zeroLayout"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Doctor Name:"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/text_doc_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstLayout"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/zeroLayout"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Doctor Phone:"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/text_doc_phone"
+            android:layout_width="0dp"
+            android:autoLink="phone"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondLayout"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/firstLayout"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:text="Appointment Date:"
+    android:textSize="16sp" />
+<TextView
+    android:id="@+id/text_patient_date"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:textStyle="bold"
+    android:layout_gravity="center"
+    android:textSize="16sp" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/thirdLayout"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/secondLayout"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:text="Appointment Time:"
+    android:textSize="16sp" />
+<TextView
+    android:id="@+id/text_patient_time"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:textStyle="bold"
+    android:textSize="16sp" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/fourthLayout"
+        android:layout_below="@+id/thirdLayout"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:text="Appointment Place:"
+    android:textSize="16sp" />
+<TextView
+    android:id="@+id/text_patient_place"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:textStyle="bold"
+    android:textSize="16sp" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/fifthLayout"
+        android:layout_below="@+id/fourthLayout"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:layout_gravity="center"
+    android:text="Appointment:"
+    android:textSize="16sp" />
+<TextView
+    android:id="@+id/txt_doc_req"
+    android:layout_width="0dp"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:layout_weight="1"
+    android:textStyle="bold"
+    android:textSize="16sp" />
+</LinearLayout>
+
+</RelativeLayout>

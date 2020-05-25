@@ -18,9 +18,9 @@ tools:context=".patient.CategoryActivity">
             android:id="@+id/category_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="#fff"
+            android:divider="#99A1AC"
             android:listSelector="#92D31B"
-            android:dividerHeight="3dp" />
+            android:dividerHeight="2dp" />
     </LinearLayout>
 
 </RelativeLayout>

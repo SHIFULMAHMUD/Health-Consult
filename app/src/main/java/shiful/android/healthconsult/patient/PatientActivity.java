@@ -2,8 +2,6 @@ package shiful.android.healthconsult.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import shiful.android.healthconsult.LoginActivity;
-import shiful.android.healthconsult.ProfileActivity;
 import shiful.android.healthconsult.R;
 
 import android.content.Intent;
@@ -11,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class PatientActivity extends AppCompatActivity {
-    CardView profile_cv,logout_cv,doctor_cv;
+    CardView profile_cv,logout_cv,doctor_cv,ambulance_cv,history_cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +19,7 @@ public class PatientActivity extends AppCompatActivity {
         profile_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(PatientActivity.this, ProfileActivity.class);
+                Intent i=new Intent(PatientActivity.this, PatientProfileActivity.class);
                 startActivity(i);
             }
         });
@@ -29,7 +27,7 @@ public class PatientActivity extends AppCompatActivity {
         logout_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(PatientActivity.this, LoginActivity.class);
+                Intent i=new Intent(PatientActivity.this, PatientLoginActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -39,6 +37,22 @@ public class PatientActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(PatientActivity.this, CategoryActivity.class);
+                startActivity(i);
+            }
+        });
+        ambulance_cv=findViewById(R.id.ambulance_cv);
+        ambulance_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(PatientActivity.this, AmbulanceActivity.class);
+                startActivity(i);
+            }
+        });
+        history_cv=findViewById(R.id.history_cv);
+        history_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(PatientActivity.this, AppointmentHistoryActivity.class);
                 startActivity(i);
             }
         });

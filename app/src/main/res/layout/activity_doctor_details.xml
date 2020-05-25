@@ -41,7 +41,6 @@ tools:context=".patient.DoctorDetailsActivity">
 
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -97,6 +96,51 @@ tools:context=".patient.DoctorDetailsActivity">
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="0"
+                    android:background="@drawable/tool" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0.5"
+                    android:letterSpacing="0.025"
+                    android:text="Specialist:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+
+                <TextView
+                    android:id="@+id/speciality_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:letterSpacing="0.025"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#99A1AC"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0"
                     android:background="@drawable/graduation" />
 
                 <TextView
@@ -116,7 +160,6 @@ tools:context=".patient.DoctorDetailsActivity">
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:autoLink="phone"
                     android:layout_gravity="center"
                     android:letterSpacing="0.025"
                     android:textColor="@android:color/black"
@@ -175,6 +218,142 @@ tools:context=".patient.DoctorDetailsActivity">
                 android:background="#99A1AC"
                 android:layout_marginTop="20dp"/>
 
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/phoneset" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0.5"
+                    android:letterSpacing="0.025"
+                    android:text="Phone:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+
+                <TextView
+                    android:id="@+id/cell_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:autoLink="phone"
+                    android:letterSpacing="0.025"
+                    android:linksClickable="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#99A1AC"
+                android:layout_marginTop="20dp"/>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/email" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0.5"
+                    android:letterSpacing="0.025"
+                    android:text="Email:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+
+                <TextView
+                    android:id="@+id/email_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:autoLink="web"
+                    android:letterSpacing="0.025"
+                    android:linksClickable="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#99A1AC"
+                android:layout_marginTop="20dp"/>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/head" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0.5"
+                    android:letterSpacing="0.025"
+                    android:text="Gender:"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+
+                <TextView
+                    android:id="@+id/gender_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.025"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#99A1AC"
+                android:layout_marginTop="20dp"/>
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -199,7 +378,6 @@ tools:context=".patient.DoctorDetailsActivity">
                     android:letterSpacing="0.025"
                     android:text="Location:"
                     android:textColor="@android:color/black"
-
                     android:textSize="14dp" />
 
 
@@ -209,9 +387,7 @@ tools:context=".patient.DoctorDetailsActivity">
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:autoLink="web"
                     android:letterSpacing="0.025"
-                    android:linksClickable="true"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
 
@@ -255,9 +431,7 @@ tools:context=".patient.DoctorDetailsActivity">
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:autoLink="web"
                     android:letterSpacing="0.025"
-                    android:linksClickable="true"
                     android:textColor="@android:color/black"
                     android:textSize="14dp" />
 
@@ -277,7 +451,7 @@ tools:context=".patient.DoctorDetailsActivity">
             android:gravity="center"
             android:layout_centerInParent="true"
             android:layout_below="@+id/lastLayout"
-            android:id="@+id/appointment_btn"
+            android:id="@+id/get_appointment_btn"
             android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"

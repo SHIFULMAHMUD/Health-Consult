@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:id="@+id/relative_list"
-android:padding="10dp"
-android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:id="@+id/relative_list"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,12 +14,12 @@ android:layout_height="wrap_content">
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="0.5"
+            android:layout_weight="0.4"
             android:layout_gravity="center"
             android:text="Name:"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/txt_doc_name"
+            android:id="@+id/txt_ambulance_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
@@ -39,13 +39,14 @@ android:layout_height="wrap_content">
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="0.5"
+            android:layout_weight="0.4"
             android:layout_gravity="center"
-            android:text="Designation:"
+            android:text="Phone:"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/txt_doc_designation"
+            android:id="@+id/txt_ambulance_phone"
             android:layout_width="0dp"
+            android:autoLink="phone"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:layout_weight="1"
@@ -64,12 +65,12 @@ android:layout_height="wrap_content">
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="0.5"
+            android:layout_weight="0.4"
             android:layout_gravity="center"
-            android:text="Qualification:"
+            android:text="Location:"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/txt_doc_qualification"
+            android:id="@+id/txt_ambulance_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
