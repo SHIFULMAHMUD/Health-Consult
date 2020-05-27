@@ -1,6 +1,7 @@
 package shiful.android.healthconsult.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import shiful.android.healthconsult.R;
 
@@ -9,12 +10,15 @@ import android.os.Bundle;
 import android.view.View;
 
 public class PatientActivity extends AppCompatActivity {
-    CardView profile_cv,logout_cv,doctor_cv,ambulance_cv,history_cv;
+    CardView profile_cv,patient_covid_check_cv,doctor_cv,ambulance_cv,history_cv,health_tips_cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Health Consult");
         profile_cv=findViewById(R.id.profile_cv);
         profile_cv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,13 +27,13 @@ public class PatientActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        logout_cv=findViewById(R.id.patient_logout_cv);
-        logout_cv.setOnClickListener(new View.OnClickListener() {
+        patient_covid_check_cv=findViewById(R.id.patient_covid_check_cv);
+        patient_covid_check_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(PatientActivity.this, PatientLoginActivity.class);
+                Intent i=new Intent(PatientActivity.this, WebActivity.class);
+                i.putExtra("url", "https://coronachecker.dh.health/");
                 startActivity(i);
-                finish();
             }
         });
         doctor_cv=findViewById(R.id.doctor_cv);
@@ -53,6 +57,14 @@ public class PatientActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(PatientActivity.this, AppointmentHistoryActivity.class);
+                startActivity(i);
+            }
+        });
+        health_tips_cv=findViewById(R.id.health_tips_cv);
+        health_tips_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(PatientActivity.this, HealthTipsActivity.class);
                 startActivity(i);
             }
         });

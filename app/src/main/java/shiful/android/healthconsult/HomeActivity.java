@@ -1,6 +1,7 @@
 package shiful.android.healthconsult;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import shiful.android.healthconsult.doctor.DoctorLoginActivity;
 import shiful.android.healthconsult.doctor.DoctorRegisterActivity;
 import shiful.android.healthconsult.patient.PatientLoginActivity;
@@ -21,6 +22,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Health Consult");
         myDialog = new Dialog(this);
     }
     public void ShowPopup(View v) {

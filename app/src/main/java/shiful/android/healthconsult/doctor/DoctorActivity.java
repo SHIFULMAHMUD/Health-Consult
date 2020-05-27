@@ -1,6 +1,7 @@
 package shiful.android.healthconsult.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import shiful.android.healthconsult.patient.PatientProfileActivity;
 import shiful.android.healthconsult.R;
@@ -16,6 +17,10 @@ public class DoctorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Health Consult");
+
         doctor_cardview=findViewById(R.id.doctor_cardview);
         doctor_cardview.setOnClickListener(new View.OnClickListener() {
             @Override

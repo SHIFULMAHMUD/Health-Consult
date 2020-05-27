@@ -11,11 +11,29 @@ tools:context=".patient.DoctorDetailsActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_layout">
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorAccent"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/natural"
             android:layout_width="match_parent"
             android:layout_height="220dp"
+            android:layout_below="@+id/toolbar_layout"
             android:orientation="horizontal"
             android:background="@drawable/stethoscope">
         </LinearLayout>
