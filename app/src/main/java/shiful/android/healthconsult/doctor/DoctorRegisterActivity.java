@@ -92,7 +92,7 @@ public class DoctorRegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String[] specialityList = {"Allergist", "Anaesthesiologist", "Andrologist", "Cardiologist", "Cardiac Electrophysiologist", "Dermatologist", "Endocrinologist", "Epidemiologist", "Family Medicine Physician", "Gastroenterologist", "Geriatrician", "Hyperbaric Physician", "Hematologist", "Hepatologist", "Immunologist", "Infectious Disease Specialist", "Intensivist", "Internal Medicine Specialist", "Medical Geneticist", "Neonatologist", "Nephrologist", "Neurologist", "Neurosurgeon", "Nuclear Medicine Specialist", "Obstetrician/Gynecologist (OB/GYN)", "Occupational Medicine Specialist", "Oncologist", "Ophthalmologist", "Oral Surgeon", "Orthopedic Surgeon / Orthopedist", "Otolaryngologist (also ENT Specialist)", "Parasitologist", "Pathologist", "Perinatologist", "Periodontist", "Pediatrician", "Physiatrist", "Plastic Surgeon", "Psychiatrist", "Pulmonologist", "Radiologist", "Rheumatologist", "Sleep Doctor / Sleep Disorders Specialist", "Spinal Cord Injury Specialist", "Sports Medicine Specialist", "Surgeon", "Thoracic Surgeon", "Urologist", "Vascular Surgeon", "Veterinarian"};
+                final String[] specialityList = {"Allergist", "Anaesthesiologist", "Andrologist", "Cardiologist", "Cardiac Electrophysiologist", "Dermatologist", "Endocrinologist", "Epidemiologist", "Family Medicine Physician", "Gastroenterologist", "Geriatrician", "Hyperbaric Physician", "Hematologist", "Hepatologist", "Immunologist", "Infectious Disease Specialist", "Intensivist", "Internal Medicine Specialist", "Medical Geneticist", "Neonatologist", "Nephrologist", "Neurologist", "Neurosurgeon", "Nuclear Medicine Specialist", "Obstetrician/Gynecologist (OB/GYN)", "Occupational Medicine Specialist", "Oncologist", "Ophthalmologist", "Oral Surgeon", "Orthopedic Surgeon / Orthopedist", "Otolaryngologist (also ENT Specialist)", "Parasitologist", "Pathologist", "Perinatologist", "Periodontist", "Pediatrician", "Physiatrist", "Plastic Surgeon", "Psychiatrist", "Pulmonologist", "Radiologist", "Rheumatologist", "Sleep Doctor / Sleep Disorders Specialist", "Spinal Cord Injury Specialist", "Sports Medicine Specialist", "Surgeon", "Thoracic Surgeon","Colon and Rectal Surgeons", "Urologist", "Vascular Surgeon", "Veterinarian","Palliative Care Specialist","Acupuncturist","Audiologist","Ayurvedic Practioner","Chiropractor","Diagnostician","Homeopathic Doctor","Audiologist","Microbiologist","Naturopathic Doctor","Pharmacist","Physiotherapist","Podiatrist / Chiropodist","Registered Massage Therapist"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(DoctorRegisterActivity.this);
                 builder.setTitle("Choose Speciality Type");
@@ -274,6 +274,58 @@ public class DoctorRegisterActivity extends AppCompatActivity {
                                 break;
 
                             case 49:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 50:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 51:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 52:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 53:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 54:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 55:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 56:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 57:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 58:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 59:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 60:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 61:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 62:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+
+                            case 63:
+                                sptypeET.setText(specialityList[position]);
+                                break;
+                            case 64:
                                 sptypeET.setText(specialityList[position]);
                                 break;
                         }

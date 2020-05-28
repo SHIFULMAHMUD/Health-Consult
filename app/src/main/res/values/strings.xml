@@ -6,6 +6,7 @@
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
     <string name="login_name_hint">Name</string>
+    <string name="logout">Logout</string>
     <string name="login_mobile_number_hint">Mobile Number</string>
     <string name="press_once_again_to_exit">Press once again to exit!</string>
 </resources>

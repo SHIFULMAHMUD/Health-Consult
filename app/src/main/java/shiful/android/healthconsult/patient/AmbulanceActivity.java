@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -35,7 +37,8 @@ public class AmbulanceActivity extends AppCompatActivity {
     ListView CustomList;
     private ProgressDialog loading;
     int MAX_SIZE=999;
-
+    Button btnSearch;
+    EditText txtSearch;
     public String ambName[]=new String[MAX_SIZE];
     public String ambCell[]=new String[MAX_SIZE];
     public String ambPlace[]=new String[MAX_SIZE];
@@ -49,10 +52,30 @@ public class AmbulanceActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Find Ambulance");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
-
+        btnSearch=findViewById(R.id.btn_search);
+        txtSearch=findViewById(R.id.txt_search);
         CustomList=(ListView)findViewById(R.id.ambulance_list);
         //call function to get data
         getData("");
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String search=txtSearch.getText().toString();
+
+                if (search.isEmpty())
+                {
+                    Toasty.info(AmbulanceActivity.this, "Please enter name or location!", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    getData(search);
+
+                }
+
+            }
+        });
+
     }
     private void getData(String text) {
 
@@ -64,7 +87,7 @@ public class AmbulanceActivity extends AppCompatActivity {
         loading.show();
 
         String URL = Constant.AMBULANCE_URL+"&text="+text;
-        Log.d("url",URL);
+        Log.d("amb_url",URL);
 
         StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
             @Override

@@ -7,8 +7,10 @@ import shiful.android.healthconsult.Constant;
 import shiful.android.healthconsult.R;
 import shiful.android.healthconsult.doctor.AppointmentActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -93,8 +95,40 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         appointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                submit();
+                final String[] taskList = {"Yes", "No"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(DoctorDetailsActivity.this);
+                builder.setTitle("Request for Appointment?");
+                builder.setCancelable(false);
+                builder.setItems(taskList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        switch (position) {
+                            case 0:
+                                submit();
+                                break;
+
+                            case 1:
+                                dialog.dismiss();
+                                break;
+
+
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+                AlertDialog accountTypeDialog = builder.create();
+
+                accountTypeDialog.show();
             }
+
         });
     }
     private void getData(String text) {

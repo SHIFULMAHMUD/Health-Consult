@@ -10,11 +10,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/zeroLayout"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/doc">
+        </ImageView>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
             android:text="Doctor Name:"
             android:textSize="16sp" />
@@ -28,6 +36,12 @@
             android:layout_gravity="center"
             android:textSize="16sp" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#99A1AC"
+        android:layout_below="@+id/zeroLayout"
+        android:layout_marginTop="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,13 +49,21 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/zeroLayout"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/phoneset">
+        </ImageView>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
-            android:text="Doctor Phone:"
+            android:text="Phone:"
             android:textSize="16sp" />
         <TextView
             android:id="@+id/text_doc_phone"
@@ -54,6 +76,12 @@
             android:layout_gravity="center"
             android:textSize="16sp" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#99A1AC"
+        android:layout_below="@+id/firstLayout"
+        android:layout_marginTop="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,13 +89,21 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/firstLayout"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/date">
+        </ImageView>
 <TextView
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:textColor="@android:color/black"
-    android:layout_weight="1"
+    android:layout_weight="0.6"
+    android:layout_marginLeft="10dp"
     android:layout_gravity="center"
-    android:text="Appointment Date:"
+    android:text="Date:"
     android:textSize="16sp" />
 <TextView
     android:id="@+id/text_patient_date"
@@ -79,6 +115,12 @@
     android:layout_gravity="center"
     android:textSize="16sp" />
 </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#99A1AC"
+        android:layout_below="@+id/secondLayout"
+        android:layout_marginTop="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,13 +128,21 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/secondLayout"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/clock">
+        </ImageView>
 <TextView
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:textColor="@android:color/black"
-    android:layout_weight="1"
+    android:layout_weight="0.6"
+    android:layout_marginLeft="10dp"
     android:layout_gravity="center"
-    android:text="Appointment Time:"
+    android:text="Time:"
     android:textSize="16sp" />
 <TextView
     android:id="@+id/text_patient_time"
@@ -104,6 +154,12 @@
     android:textStyle="bold"
     android:textSize="16sp" />
 </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#99A1AC"
+        android:layout_below="@+id/thirdLayout"
+        android:layout_marginTop="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,13 +167,21 @@
         android:id="@+id/fourthLayout"
         android:layout_below="@+id/thirdLayout"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/city">
+        </ImageView>
 <TextView
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:textColor="@android:color/black"
-    android:layout_weight="1"
+    android:layout_weight="0.6"
+    android:layout_marginLeft="10dp"
     android:layout_gravity="center"
-    android:text="Appointment Place:"
+    android:text="Location:"
     android:textSize="16sp" />
 <TextView
     android:id="@+id/text_patient_place"
@@ -129,6 +193,12 @@
     android:textStyle="bold"
     android:textSize="16sp" />
 </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#99A1AC"
+        android:layout_below="@+id/fourthLayout"
+        android:layout_marginTop="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -136,11 +206,19 @@
         android:id="@+id/fifthLayout"
         android:layout_below="@+id/fourthLayout"
         android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tool">
+        </ImageView>
 <TextView
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:textColor="@android:color/black"
-    android:layout_weight="1"
+    android:layout_weight="0.6"
+    android:layout_marginLeft="10dp"
     android:layout_gravity="center"
     android:text="Appointment:"
     android:textSize="16sp" />

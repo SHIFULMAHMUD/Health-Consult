@@ -5,13 +5,16 @@ import androidx.appcompat.widget.Toolbar;
 import es.dmoral.toasty.Toasty;
 import shiful.android.healthconsult.Constant;
 import shiful.android.healthconsult.R;
+import shiful.android.healthconsult.patient.DoctorDetailsActivity;
 import shiful.android.healthconsult.patient.PatientProfileActivity;
 import shiful.android.healthconsult.patient.PatientUpdateProfileActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -134,11 +137,39 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            ConfirRequest();
+                final String[] taskList = {"Yes", "No"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentDetailsActivity.this);
+                builder.setTitle("Confirm Appointment?");
+                builder.setCancelable(false);
+                builder.setItems(taskList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        switch (position) {
+                            case 0:
+                                ConfirmRequest();
+                                break;
+                            case 1:
+                                dialog.dismiss();
+                                break;
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+                AlertDialog accountTypeDialog = builder.create();
+
+                accountTypeDialog.show();
             }
         });
     }
-    public void  ConfirRequest()
+    public void  ConfirmRequest()
     {
         //Getting values from edit texts
         final String patient_cell = getCell;

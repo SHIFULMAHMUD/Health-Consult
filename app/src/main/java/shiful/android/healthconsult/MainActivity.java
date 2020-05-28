@@ -115,11 +115,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private boolean isFirstTimeStartApp(){
-        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("Medicine Provider", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("Health Consult", Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("FirstTimeStartFlag",true);
     }
     private void setFirstTimeStartStatus(boolean firstTimeStartStatus){
-        SharedPreferences preferences=getApplicationContext().getSharedPreferences("Medicine Provider", Context.MODE_PRIVATE);
+        SharedPreferences preferences=getApplicationContext().getSharedPreferences("Health Consult", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
         editor.putBoolean("FirstTimeStartFlag",firstTimeStartStatus);
         editor.commit();

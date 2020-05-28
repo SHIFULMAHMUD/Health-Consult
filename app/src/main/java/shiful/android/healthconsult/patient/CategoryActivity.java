@@ -37,6 +37,8 @@ public class CategoryActivity extends AppCompatActivity {
     ListView CustomList;
     private ProgressDialog loading;
     int MAX_SIZE=999;
+    Button btnSearch;
+    EditText txtSearch;
     public String categoryId[]=new String[MAX_SIZE];
     public String categoryName[]=new String[MAX_SIZE];
 
@@ -49,9 +51,30 @@ public class CategoryActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Doctor Category");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
+        btnSearch=findViewById(R.id.btn_search);
+        txtSearch=findViewById(R.id.txt_search);
         CustomList=(ListView)findViewById(R.id.category_list);
         //call function to get data
         getData("");
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String search=txtSearch.getText().toString();
+
+                if (search.isEmpty())
+                {
+                    Toasty.info(CategoryActivity.this, "Please enter category name!", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    getData(search);
+
+                }
+
+            }
+        });
+
     }
     private void getData(String text) {
 

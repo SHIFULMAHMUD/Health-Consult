@@ -28,8 +28,8 @@ public class SlideAdapter extends PagerAdapter {
             "SHARE US"
     };
     public String[] slide_descs={
-            "There are many things you can do to help keep your heart healthy and disease-free. You can schedule an annual checkup, exercise daily, quit smoking, or take steps to reduce the level of stress in your life. All of these things can have a positive effect on heart health. But, one of the simplest lifestyle changes that will benefit your heart is watching what you eat.",
-            "Follow the label instructions carefully. Some medications need to be taken with food, others should be taken on an empty stomach. Ask your doctor or pharmacist if there are any foods that should be avoided while taking your medication. If you are taking medications with water, drink a full 8-ounce glass of water.",
+            "To keep your heart healthy and disease-free you can schedule an annual checkup, exercise daily, quit smoking, maintain a healthy diet, or take steps to reduce the level of stress in your life.",
+            "Follow the label instructions carefully. Ask your doctor if there are any foods that should be avoided while taking your medication.",
             "Please share with us your experience of using this app & your problems, thoughts to grow up a better service."
     };
     @Override
