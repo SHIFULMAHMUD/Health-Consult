@@ -125,7 +125,7 @@ public class PatientLoginActivity extends AppCompatActivity implements TextWatch
 
         }
 
-        else if (cell.length()!=11) {
+        else if (cell.length()!=11 || !cell.startsWith("01")) {
 
             mobileEt.setError("Please enter valid phone number !");
             requestFocus(mobileEt);

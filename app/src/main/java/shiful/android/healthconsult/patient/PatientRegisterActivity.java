@@ -1,15 +1,21 @@
 package shiful.android.healthconsult.patient;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import es.dmoral.toasty.Toasty;
 import shiful.android.healthconsult.Constant;
 import shiful.android.healthconsult.R;
+import shiful.android.healthconsult.doctor.DoctorLoginActivity;
+import shiful.android.healthconsult.doctor.DoctorRegisterActivity;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -27,13 +33,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class PatientRegisterActivity extends AppCompatActivity {
+    private static final String CHANNEL_ID = "health_consult";
+    private static final String CHANNEL_NAME= "Health Consult";
+    private static final String CHANNEL_DESC = "Android Push Notification Tutorial";
     TextView goto_login_tv;
     Button signupBtn;
+    String token;
+    private FirebaseAuth mAuth;
     EditText genderET,nameET,mobileET,emailET,passwordET;
     ProgressDialog loading;
     private static long back_pressed;
@@ -48,12 +66,19 @@ public class PatientRegisterActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Health Consult");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
+        mAuth=FirebaseAuth.getInstance();
         goto_login_tv=findViewById(R.id.goto_login_text);
         nameET=findViewById(R.id.editTextRegisterName);
         mobileET=findViewById(R.id.editTextRegisterMobile);
         emailET=findViewById(R.id.editTextRegisterEmail);
         passwordET=findViewById(R.id.editTextRegisterPassword);
         genderET=findViewById(R.id.editTextRegisterGender);
+        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel(CHANNEL_ID,CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
         signupBtn=findViewById(R.id.cirRegisterButton);
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,10 +142,17 @@ public class PatientRegisterActivity extends AppCompatActivity {
         final String email = emailET.getText().toString().trim();
         final String gender = genderET.getText().toString().trim();
         final String password = passwordET.getText().toString().trim();
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
 
-
-
-
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()){
+                            token =task.getResult().getToken();
+                            Log.d("token",token);
+                        }
+                    }
+                });
         //Checking  field/validation
         if (name.isEmpty()) {
             nameET.setError("Please enter name !");
@@ -133,7 +165,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
         }
 
-        else if (cell.length()!=11) {
+        else if (cell.length()!=11 || !cell.startsWith("01")) {
 
             mobileET.setError("Please enter valid phone number !");
             requestFocus(mobileET);
@@ -183,11 +215,42 @@ public class PatientRegisterActivity extends AppCompatActivity {
                     //for track response in logcat
                     Log.d("res", response);
                     if (response.trim().equals("success")) {
-                        loading.dismiss();
-                        Intent intent = new Intent(PatientRegisterActivity.this, PatientLoginActivity.class);
-                        Toasty.success(PatientRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        startActivity(intent);
-                        finish();
+                        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    Intent intent = new Intent(PatientRegisterActivity.this, PatientLoginActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    Toasty.success(PatientRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(intent);
+                                    finish();
+                                    loading.dismiss();
+                                }else {
+                                    if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                                        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()){
+                                                    Intent intent = new Intent(PatientRegisterActivity.this, PatientLoginActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    Toasty.success(PatientRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                                    startActivity(intent);
+                                                    finish();
+                                                    loading.dismiss();
+                                                }else {
+                                                    loading.dismiss();
+                                                    Toasty.error(PatientRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        loading.dismiss();
+                                        Toasty.error(PatientRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
                     } else if (response.trim().equals("exists")) {
 
                         Toasty.warning(PatientRegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
@@ -223,7 +286,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
                     params.put(Constant.KEY_GENDER, gender);
                     params.put(Constant.KEY_EMAIL, email);
                     params.put(Constant.KEY_PASSWORD, password);
-
+                    params.put(Constant.KEY_TOKEN, token);
 
                     Log.d("url_info",Constant.SIGNUP_URL);
 

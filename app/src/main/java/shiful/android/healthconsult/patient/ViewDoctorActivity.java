@@ -46,6 +46,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
     public String docEmail[]=new String[MAX_SIZE];
     public String docPlace[]=new String[MAX_SIZE];
     public String docVisit[]=new String[MAX_SIZE];
+    public String docToken[]=new String[MAX_SIZE];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +126,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
                     String email = jo.getString(Constant.KEY_EMAIL);
                     String place = jo.getString(Constant.KEY_PLACE);
                     String cost = jo.getString(Constant.KEY_COST);
+                    String token = jo.getString(Constant.KEY_DOC_TOKEN);
 
                     //insert data into array for put extra
 
@@ -137,6 +139,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
                         docEmail[i] = email;
                         docPlace[i] = place;
                         docVisit[i] = cost;
+                        docToken[i] = token;
 
                     //put value into Hashmap
                     HashMap<String, String> doctor_data = new HashMap<>();
@@ -150,6 +153,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
                     doctor_data.put(Constant.KEY_EMAIL, email);
                     doctor_data.put(Constant.KEY_PLACE, place);
                     doctor_data.put(Constant.KEY_COST, cost);
+                    doctor_data.put(Constant.KEY_DOC_TOKEN, token);
 
                     list.add(doctor_data);
                     }
@@ -178,6 +182,7 @@ public class ViewDoctorActivity extends AppCompatActivity {
                 intent.putExtra("email",docEmail[position]);
                 intent.putExtra("place",docPlace[position]);
                 intent.putExtra("visit",docVisit[position]);
+                intent.putExtra("token",docToken[position]);
                 startActivity(intent);
             }
         });

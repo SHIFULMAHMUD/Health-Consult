@@ -1,10 +1,12 @@
 package shiful.android.healthconsult.doctor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import es.dmoral.toasty.Toasty;
 import shiful.android.healthconsult.Constant;
 import shiful.android.healthconsult.R;
+import shiful.android.healthconsult.notification.NotificationActivity;
 import shiful.android.healthconsult.patient.DoctorDetailsActivity;
 import shiful.android.healthconsult.patient.PatientProfileActivity;
 import shiful.android.healthconsult.patient.PatientUpdateProfileActivity;
@@ -30,12 +32,24 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.internal.Constants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -43,7 +57,7 @@ import java.util.Map;
 
 public class AppointmentDetailsActivity extends AppCompatActivity {
     TextView txtName, txtCell, txtEmail,txtGender;
-    String getName, getCell, getEmail,getGender,getPhone,txttime;
+    String getName, getCell, getEmail,getGender,getPhone,txttime,getToken;
     Button confirmBtn;
     EditText txtDate, txtTime,txtPlace;
     private ProgressDialog loading;
@@ -58,6 +72,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Appointment Details");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
+
         txtName=findViewById(R.id.patient_name_tv);
         txtEmail=findViewById(R.id.patient_email_tv);
         txtGender=findViewById(R.id.patient_gender_tv);
@@ -68,6 +83,8 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         getCell = getIntent().getExtras().getString("cell");
         getEmail = getIntent().getExtras().getString("email");
         getGender = getIntent().getExtras().getString("gender");
+        getToken = getIntent().getExtras().getString("token");
+
         //Fetching cell from shared preferences
         SharedPreferences sharedPreferences;
         sharedPreferences =getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -147,6 +164,11 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                         switch (position) {
                             case 0:
                                 ConfirmRequest();
+                                String title = "Appointment Confirmed";
+                                String message = "Your appointment has been confirmed. Know details from Health Consult app.";
+                                String token=getToken;
+                                Log.d("getto",token);
+                                SaveContact(title,message,token);
                                 break;
                             case 1:
                                 dialog.dismiss();
@@ -168,7 +190,9 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                 accountTypeDialog.show();
             }
         });
+
     }
+
     public void  ConfirmRequest()
     {
         //Getting values from edit texts
@@ -249,6 +273,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                     params.put(Constant.KEY_PLACE, place);
                     params.put(Constant.KEY_PATIENT_REQ, request);
 
+
                     Log.d("url_info",Constant.CONFIRM_APPOINTMENT_URL);
 
                     //returning parameter
@@ -260,6 +285,55 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
         }
+    }
+
+    public void  SaveContact(String get_title, String msg, final String token)
+    {
+        final String title=get_title;
+        final String message=msg;
+
+
+        loading = new ProgressDialog(this);
+
+        loading.setMessage("Please wait....");
+        loading.show();
+
+        String URL = Constant.NOTIFICATION_API_URL;
+
+        //Creating a string request
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //for track response in logcat
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //You can handle error here if you want
+
+                        Toasty.error(AppointmentDetailsActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_LONG).show();
+                        loading.dismiss();
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                //Adding parameters to request
+                params.put("title", title);
+                params.put("message",message);
+                params.put("token",token);
+
+                Log.d("msg",title+ " "+message+" "+token);
+                return params;
+            }
+        };
+
+        //Adding the string request to the queue
+        RequestQueue requestQueue = Volley.newRequestQueue(AppointmentDetailsActivity.this);
+        requestQueue.add(stringRequest);
     }
     //for request focus
     private void requestFocus(View view) {

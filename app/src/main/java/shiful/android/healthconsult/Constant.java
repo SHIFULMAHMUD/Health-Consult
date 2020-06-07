@@ -19,6 +19,7 @@ public class Constant {
     public static final String AMBULANCE_URL = MAIN_URL+"/ambulance.php?";
     public static final String HISTORY_URL = MAIN_URL+"/appointment_history.php?cell=";
     public static final String PATIENT_HISTORY_URL = MAIN_URL+"/patient_history.php?cell=";
+    public static final String NOTIFICATION_API_URL = MAIN_URL+"/api.php";
 
     //Keys for server communications
 
@@ -29,6 +30,7 @@ public class Constant {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_DATE = "date";
     public static final String KEY_TIME = "time";
+    public static final String KEY_STATUS = "status";
 
 
     public static final String KEY_UPDATE_NAME = "name";
@@ -52,6 +54,7 @@ public class Constant {
     public static final String KEY_PLACE = "place";
     public static final String KEY_COST = "cost";
     public static final String KEY_PHONE = "phone";
+    public static final String KEY_DOC_TOKEN = "doc_token";
 
     public static final String KEY_AMB_NAME = "ambulance_name";
     public static final String KEY_AMB_CELL = "ambulance_phone";
@@ -62,6 +65,7 @@ public class Constant {
     public static final String KEY_PATIENT_CELL = "patient_mobile";
     public static final String KEY_PATIENT_EMAIL = "email";
     public static final String KEY_PATIENT_REQ = "request";
+    public static final String KEY_TOKEN = "token";
     //share preference
     //We will use this to store the user cell number into shared preference
     public static final String SHARED_PREF_NAME = "shiful.android.healthconsult"; //pcakage name+ id

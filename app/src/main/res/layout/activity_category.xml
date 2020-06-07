@@ -39,6 +39,7 @@ tools:context=".patient.CategoryActivity">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:textSize="16sp"
             android:hint="Search Category Name. . . "
             android:textColor="@color/colorPrimaryDark"
             android:inputType="text" />

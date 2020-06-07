@@ -1,5 +1,6 @@
 package shiful.android.healthconsult.doctor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import es.dmoral.toasty.Toasty;
@@ -11,9 +12,12 @@ import shiful.android.healthconsult.patient.PatientRegisterActivity;
 import shiful.android.healthconsult.patient.ViewDoctorActivity;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -34,6 +38,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,10 +55,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DoctorRegisterActivity extends AppCompatActivity {
+    private static final String CHANNEL_ID = "health_consult";
+    private static final String CHANNEL_NAME= "Health Consult";
+    private static final String CHANNEL_DESC = "Android Push Notification Tutorial";
     TextView goto_login_tv;
     Button signupBtn;
+    String token;
     EditText sptypeET,genderET,nameET,mobileET,emailET,passwordET,qualificationEt,designationET,placeET,visitET;
     ProgressDialog loading;
+    private FirebaseAuth mAuth;
     private static long back_pressed;
     private static final int TIME_DELAY = 2000;
 
@@ -60,6 +76,7 @@ public class DoctorRegisterActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Health Consult");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
+        mAuth=FirebaseAuth.getInstance();
         goto_login_tv=findViewById(R.id.goto_doc_login_text);
         nameET=findViewById(R.id.editTextRegisterDocName);
         sptypeET=findViewById(R.id.editTextRegisterSpType);
@@ -72,6 +89,13 @@ public class DoctorRegisterActivity extends AppCompatActivity {
         passwordET=findViewById(R.id.editTextRegisterDocPassword);
         genderET=findViewById(R.id.editTextRegisterDocGender);
         signupBtn=findViewById(R.id.cirDocRegisterButton);
+        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel(CHANNEL_ID,CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -397,6 +421,18 @@ public class DoctorRegisterActivity extends AppCompatActivity {
         final String password = passwordET.getText().toString().trim();
         final String location = placeET.getText().toString().trim();
         final String visit = visitET.getText().toString().trim();
+        final String status= "Pending";
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()){
+                            token =task.getResult().getToken();
+                            Log.d("token",token);
+                        }
+                    }
+                });
 
         //Checking  field/validation
         if (name.isEmpty()) {
@@ -410,7 +446,7 @@ public class DoctorRegisterActivity extends AppCompatActivity {
 
         }
 
-        else if (cell.length()!=11) {
+        else if (cell.length()!=11 || !cell.startsWith("01")) {
 
             mobileET.setError("Please enter valid phone number !");
             requestFocus(mobileET);
@@ -482,11 +518,44 @@ public class DoctorRegisterActivity extends AppCompatActivity {
                     //for track response in logcat
                     Log.d("res", response);
                     if (response.trim().equals("success")) {
-                        loading.dismiss();
-                        Intent intent = new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class);
-                        Toasty.success(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        startActivity(intent);
-                        finish();
+
+                        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    Intent intent = new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    Toasty.success(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(intent);
+                                    finish();
+                                    loading.dismiss();
+                                }else {
+                                    if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                                        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()){
+                                                    Intent intent = new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    Toasty.success(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                                    startActivity(intent);
+                                                    finish();
+                                                    loading.dismiss();
+                                                }else {
+                                                    loading.dismiss();
+                                                    Toasty.error(DoctorRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        loading.dismiss();
+                                        Toasty.error(DoctorRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+
                     } else if (response.trim().equals("exists")) {
 
                         Toasty.warning(DoctorRegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
@@ -527,9 +596,8 @@ public class DoctorRegisterActivity extends AppCompatActivity {
                     params.put(Constant.KEY_PASSWORD, password);
                     params.put(Constant.KEY_PLACE, location);
                     params.put(Constant.KEY_COST, visit);
-
-
-                    Log.d("url_info",Constant.SIGNUP_URL);
+                    params.put(Constant.KEY_STATUS, status);
+                    params.put(Constant.KEY_TOKEN, token);
 
                     //returning parameter
                     return params;

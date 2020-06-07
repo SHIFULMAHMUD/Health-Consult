@@ -6,6 +6,7 @@ import es.dmoral.toasty.Toasty;
 import shiful.android.healthconsult.Constant;
 import shiful.android.healthconsult.R;
 import shiful.android.healthconsult.doctor.AppointmentActivity;
+import shiful.android.healthconsult.doctor.AppointmentDetailsActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -38,10 +39,10 @@ import java.util.Map;
 
 public class DoctorDetailsActivity extends AppCompatActivity {
     TextView txtName, txtQualification, txtDesignation,txtPlace, txtCost,txtSpeciality,txtGender,txtEmail,txtCell;
-    String getPhone,getName, getQualification, getDesignation,getPlace,getCost,getSpeciality,getGender,getEmail;
+    String getPhone,getName, getQualification, getDesignation,getPlace,getCost,getSpeciality,getGender,getEmail,getToken;
     Button appointmentBtn;
     private ProgressDialog loading;
-    String getCell,userName, userCell, userGender, userEmail, userPassword,date,time,place,request;
+    String getCell,userName, userCell, userGender, userEmail, userPassword,userToken,date,time,place,request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
         getEmail = getIntent().getExtras().getString("email");
         getPlace = getIntent().getExtras().getString("place");
         getCost = getIntent().getExtras().getString("visit");
+        getToken = getIntent().getExtras().getString("token");
 
         txtName.setText(getName);
         txtSpeciality.setText(getSpeciality);
@@ -105,6 +107,11 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                         switch (position) {
                             case 0:
                                 submit();
+                                String title = "Appointment Request";
+                                String message = "You got an appointment request from a patient. Know details from Health Consult app.";
+                                String token=getToken;
+                                Log.d("gettoken",token);
+                                SaveContact(title,message,token);
                                 break;
 
                             case 1:
@@ -185,6 +192,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                     final String gender = jo.getString(Constant.KEY_GENDER);
                     final String email = jo.getString(Constant.KEY_EMAIL);
                     final String password = jo.getString(Constant.KEY_PASSWORD);
+                    final String token = jo.getString(Constant.KEY_TOKEN);
                     //insert data into array for put extra
 
                     userName = name;
@@ -196,6 +204,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                     time="Pending";
                     place="Pending";
                     request="Pending";
+                    userToken = token;
                 }
             }
         } catch (JSONException e) {
@@ -283,6 +292,8 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                     params.put(Constant.KEY_TIME, time);
                     params.put(Constant.KEY_PLACE, place);
                     params.put(Constant.KEY_PATIENT_REQ, request);
+                    params.put(Constant.KEY_DOC_TOKEN, getToken);
+                    params.put(Constant.KEY_TOKEN, userToken);
                     //returning parameter
                     return params;
                 }
@@ -292,7 +303,54 @@ public class DoctorDetailsActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
         }
+    public void  SaveContact(String get_title, String msg, final String token)
+    {
+        final String title=get_title;
+        final String message=msg;
 
+
+        loading = new ProgressDialog(this);
+
+        loading.setMessage("Please wait....");
+        loading.show();
+
+        String URL = Constant.NOTIFICATION_API_URL;
+
+        //Creating a string request
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //for track response in logcat
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //You can handle error here if you want
+
+                        Toasty.error(DoctorDetailsActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_LONG).show();
+                        loading.dismiss();
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                //Adding parameters to request
+                params.put("title", title);
+                params.put("message",message);
+                params.put("token",token);
+
+                Log.d("msg",title+ " "+message+" "+token);
+                return params;
+            }
+        };
+
+        //Adding the string request to the queue
+        RequestQueue requestQueue = Volley.newRequestQueue(DoctorDetailsActivity.this);
+        requestQueue.add(stringRequest);
+    }
 
     //for back button
     @Override

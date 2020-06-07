@@ -48,6 +48,7 @@ public class AppointmentActivity extends AppCompatActivity {
     public String patientGender[]=new String[MAX_SIZE];
     public String patientEmail[]=new String[MAX_SIZE];
     public String patientRequest[]=new String[MAX_SIZE];
+    public String patientToken[]=new String[MAX_SIZE];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +131,7 @@ public class AppointmentActivity extends AppCompatActivity {
                     String cell = jo.getString(Constant.KEY_CELL);
                     String email = jo.getString(Constant.KEY_EMAIL);
                     String request = jo.getString(Constant.KEY_PATIENT_REQ);
+                    String token = jo.getString(Constant.KEY_TOKEN);
 
                     //insert data into array for put extra
 
@@ -138,6 +140,7 @@ public class AppointmentActivity extends AppCompatActivity {
                     patientCell[i] = cell;
                     patientEmail[i] = email;
                     patientRequest[i] = request;
+                    patientToken[i] = token;
 
 
                     //put value into Hashmap
@@ -147,6 +150,7 @@ public class AppointmentActivity extends AppCompatActivity {
                     patient_data.put(Constant.KEY_CELL, cell);
                     patient_data.put(Constant.KEY_EMAIL, email);
                     patient_data.put(Constant.KEY_PATIENT_REQ, request);
+                    patient_data.put(Constant.KEY_TOKEN, token);
 
                     list.add(patient_data);
                 }
@@ -171,6 +175,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 intent.putExtra("cell",patientCell[position]);
                 intent.putExtra("email",patientEmail[position]);
                 intent.putExtra("gender",patientGender[position]);
+                intent.putExtra("token",patientToken[position]);
                 startActivity(intent);
 
             }

@@ -127,7 +127,7 @@ public class DoctorLoginActivity extends AppCompatActivity implements TextWatche
 
         }
 
-        else if (cell.length()!=11) {
+        else if (cell.length()!=11 || !cell.startsWith("01")) {
 
             mobileEt.setError("Please enter valid phone number !");
             requestFocus(mobileEt);
@@ -161,7 +161,7 @@ public class DoctorLoginActivity extends AppCompatActivity implements TextWatche
 
                             Log.d("response",""+response);
                             //If we are getting success from server
-                            if (response.trim().equals("success")) {
+                            if (response.trim().equals("accept")) {
                                 //Creating a shared preference
 
                                 SharedPreferences sp = DoctorLoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -180,7 +180,37 @@ public class DoctorLoginActivity extends AppCompatActivity implements TextWatche
                                     Toasty.success(DoctorLoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     loading.dismiss();
                             }
+                            else if (response.trim().equals("reject")) {
+                                //Creating a shared preference
 
+                                SharedPreferences sp = DoctorLoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                                //Creating editor to store values to shared preferences
+                                SharedPreferences.Editor editor = sp.edit();
+                                //Adding values to editor
+                                editor.putString(Constant.CELL_SHARED_PREF, cell);
+                                //Saving values to editor
+                                editor.commit();
+                                //Starting Home activity
+                                Toasty.error(DoctorLoginActivity.this, "Account Blocked!\nPlease contact with Service Provider.", Toast.LENGTH_LONG).show();
+                                loading.dismiss();
+                            }
+                            else if (response.trim().equals("pending")) {
+                                //Creating a shared preference
+
+                                SharedPreferences sp = DoctorLoginActivity.this.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                                //Creating editor to store values to shared preferences
+                                SharedPreferences.Editor editor = sp.edit();
+                                //Adding values to editor
+                                editor.putString(Constant.CELL_SHARED_PREF, cell);
+
+                                //Saving values to editor
+                                editor.commit();
+                                //Starting Home activity
+                                Toasty.info(DoctorLoginActivity.this, "Your account still not approved by admin! Please contact with Service Provider.", Toast.LENGTH_LONG).show();
+                                loading.dismiss();
+                            }
                             else if(response.trim().equals("failure")) {
                                 //If the server response is not success
                                 //Displaying an error message on toast

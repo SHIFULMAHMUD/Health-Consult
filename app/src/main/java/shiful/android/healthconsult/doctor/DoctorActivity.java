@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import es.dmoral.toasty.Toasty;
+import shiful.android.healthconsult.notification.NotificationActivity;
 import shiful.android.healthconsult.patient.PatientActivity;
 import shiful.android.healthconsult.patient.PatientLoginActivity;
 import shiful.android.healthconsult.patient.PatientProfileActivity;
@@ -62,7 +63,7 @@ public class DoctorActivity extends AppCompatActivity {
             }
         });
     }
-    /*@Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -78,12 +79,10 @@ public class DoctorActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent=new Intent(DoctorActivity.this, DoctorLoginActivity.class);
+            Intent intent=new Intent(DoctorActivity.this, NotificationActivity.class);
             startActivity(intent);
-            finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }*/
     @Override

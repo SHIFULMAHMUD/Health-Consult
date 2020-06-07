@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "918829762708",
+    "firebase_url": "https://health-consult-7b18d.firebaseio.com",
+    "project_id": "health-consult-7b18d",
+    "storage_bucket": "health-consult-7b18d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918829762708:android:c6d1dac531434ab9814c81",
+        "android_client_info": {
+          "package_name": "shiful.android.healthconsult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918829762708-89ia8ntn4t10savukatrko57qnoh1aed.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "shiful.android.healthconsult",
+            "certificate_hash": "f0b3796bc2937ffbb4ed4f3e11ec46e1b8d4b9db"
+          }
+        },
+        {
+          "client_id": "918829762708-c1dn93bkast81ts71qumgd81no22kfns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcxy9Cjlj1v16I62fArnhB6nhZwQluAWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918829762708-c1dn93bkast81ts71qumgd81no22kfns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
