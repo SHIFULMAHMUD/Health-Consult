@@ -63,7 +63,6 @@ public class DoctorRegisterActivity extends AppCompatActivity {
     String token;
     EditText sptypeET,genderET,nameET,mobileET,emailET,passwordET,qualificationEt,designationET,placeET,visitET;
     ProgressDialog loading;
-    private FirebaseAuth mAuth;
     private static long back_pressed;
     private static final int TIME_DELAY = 2000;
 
@@ -76,7 +75,7 @@ public class DoctorRegisterActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Health Consult");
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
-        mAuth=FirebaseAuth.getInstance();
+
         goto_login_tv=findViewById(R.id.goto_doc_login_text);
         nameET=findViewById(R.id.editTextRegisterDocName);
         sptypeET=findViewById(R.id.editTextRegisterSpType);
@@ -514,47 +513,15 @@ public class DoctorRegisterActivity extends AppCompatActivity {
             final StringRequest stringRequest=new StringRequest(Request.Method.POST, Constant.DOC_SIGNUP_URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-
                     //for track response in logcat
                     Log.d("res", response);
-                    if (response.trim().equals("success")) {
+                    loading.dismiss();
 
-                        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()){
-                                    Intent intent = new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    Toasty.success(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(intent);
-                                    finish();
-                                    loading.dismiss();
-                                }else {
-                                    if (task.getException() instanceof FirebaseAuthUserCollisionException){
-                                        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                if (task.isSuccessful()){
-                                                    Intent intent = new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                    Toasty.success(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                                    startActivity(intent);
-                                                    finish();
-                                                    loading.dismiss();
-                                                }else {
-                                                    loading.dismiss();
-                                                    Toasty.error(DoctorRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-                                    }
-                                    else {
-                                        loading.dismiss();
-                                        Toasty.error(DoctorRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
+                    if (response.trim().equals("success")) {
+                        Intent intent = new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class);
+                        Toasty.success(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                        finish();
 
                     } else if (response.trim().equals("exists")) {
 
