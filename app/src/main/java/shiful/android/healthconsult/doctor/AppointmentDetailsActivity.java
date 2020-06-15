@@ -58,7 +58,7 @@ import java.util.Map;
 public class AppointmentDetailsActivity extends AppCompatActivity {
     TextView txtName, txtCell, txtEmail,txtGender;
     String getName, getCell, getEmail,getGender,getPhone,txttime,getToken;
-    Button confirmBtn;
+    Button confirmBtn,rejectBtn;
     EditText txtDate, txtTime,txtPlace;
     private ProgressDialog loading;
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -79,6 +79,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         txtCell=findViewById(R.id.patient_cell_tv);
         txtPlace=findViewById(R.id.appointment_location_et);
         confirmBtn=findViewById(R.id.confirm_appointment_btn);
+        rejectBtn=findViewById(R.id.reject_appointment_btn);
         getName = getIntent().getExtras().getString("name");
         getCell = getIntent().getExtras().getString("cell");
         getEmail = getIntent().getExtras().getString("email");
@@ -101,7 +102,6 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR);
                 mMonth = c.get(Calendar.MONTH);
                 mDay = c.get(Calendar.DAY_OF_MONTH);
-
 
                 final DatePickerDialog datePickerDialog = new DatePickerDialog(AppointmentDetailsActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -190,7 +190,44 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                 accountTypeDialog.show();
             }
         });
+        rejectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] taskList = {"Yes", "No"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(AppointmentDetailsActivity.this);
+                builder.setTitle("Reject Appointment?");
+                builder.setCancelable(false);
+                builder.setItems(taskList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        switch (position) {
+                            case 0:
+                                RejectRequest();
+                                String title = "Appointment Rejected";
+                                String message = "Your appointment has been rejected by Doctor. Know details from Health Consult app.";
+                                String token=getToken;
+                                SaveContact(title,message,token);
+                                break;
+                            case 1:
+                                dialog.dismiss();
+                                break;
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+                AlertDialog accountTypeDialog = builder.create();
+
+                accountTypeDialog.show();
+            }
+        });
     }
 
     public void  ConfirmRequest()
@@ -286,6 +323,77 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
     }
+
+    public void  RejectRequest()
+    {
+        //Getting values from edit texts
+        final String patient_cell = getCell;
+        final String doc_cell = getPhone;
+        final String date = "Rejected";
+        final String time = "Rejected";
+        final String place = "Rejected";
+        final String request = "Rejected";
+
+            loading = new ProgressDialog(this);
+            loading.setIcon(R.drawable.wait_icon);
+            loading.setTitle("Rejecting Request");
+            loading.setMessage("Please wait....");
+            loading.show();
+
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, Constant.REJECT_APPOINTMENT_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    //for track response in logcat
+                    Log.d("RESPONSE", response);
+
+                    if (response.trim().equals("success")) {
+                        loading.dismiss();
+                        Intent intent = new Intent(AppointmentDetailsActivity.this, PatientHistoryActivity.class);
+                        Toasty.success(AppointmentDetailsActivity.this, "Appointment Rejected", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    else if (response.trim().equals("failure")) {
+
+                        Toasty.error(AppointmentDetailsActivity.this, "Request Failed!", Toast.LENGTH_SHORT).show();
+                        loading.dismiss();
+
+                    }
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Toasty.error(AppointmentDetailsActivity.this, "No Internet Connection or \nThere is an error !!!", Toast.LENGTH_SHORT).show();
+                            loading.dismiss();
+                        }
+                    }
+
+            ){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    //Adding parameters to request
+
+                    params.put(Constant.KEY_UPDATE_CELL, patient_cell);
+                    params.put(Constant.KEY_PHONE, doc_cell);
+                    params.put(Constant.KEY_DATE, date);
+                    params.put(Constant.KEY_TIME, time);
+                    params.put(Constant.KEY_PLACE, place);
+                    params.put(Constant.KEY_PATIENT_REQ, request);
+
+                    //returning parameter
+                    return params;
+                }
+            };
+
+            //Adding the string request to the queue
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+        }
 
     public void  SaveContact(String get_title, String msg, final String token)
     {
