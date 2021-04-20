@@ -1,0 +1,48 @@
+
+u
+java:S3252Ê"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8—ÎÌİ.
+˜
+java:S1186ã"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(á¬‡İ
+C
+java:S1659>"(Declare "passwordEt" on a separate line.(ğğé†üÿÿÿÿ
+n	java:S116;"YRename this field "goto_signup_tv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÉïÇ
+m
+java:S3008C"WRename this field "back_pressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ¼ÑÄ
+m	java:S116E"SRename this field "MAX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”üÇøşÿÿÿÿ
+S
+java:S1197F"8Move the array designator from the variable to the type.(âÄ¡èşÿÿÿÿ
+X
+java:S1126}"BReplace this if-then-else statement by a single method invocation.(˜·Øã
+
+java:S1186í"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×åó«øÿÿÿÿ
+U
+java:S1135Ë"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8—ÎÌİ.
+g
+java:S1301’"KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ
+C
+java:S1659?"!Declare "lat" on a separate line.(èëÖøÿÿÿÿ8¡ëÃÌİ.
+l	java:S116G"WRename this field "rem_userpass" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¬Ë
+\
+java:S1155Ù">Use isEmpty() to check whether the collection is empty or not.(ß »§8—ÎÌİ.
+L
+java:S1874B"6Remove this use of "ProgressDialog"; it is deprecated.(Ï’Ú
+x
+java:S1104F"]Make userAccountStatus a static final constant or non-public and provide accessors if needed.(âÄ¡èşÿÿÿÿ
+Q
+java:S1117œ":Rename "editor" which hides the field declared at line 73.(Íµ’ı
+C
+java:S1659?"!Declare "lng" on a separate line.(èëÖøÿÿÿÿ8¡ëÃÌİ.
+I
+java:S1874‹"2Remove this use of "setMessage"; it is deprecated.(¤¾š˜
+L
+java:S1066Y"/Merge this if statement with the enclosing one.(ÜÉÌâ8à©ÇÌİ.
+d	java:S100å"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¥˜–
+M
+java:S2696"6Make the enclosing method "static" or remove this set.(é‘
+[
+java:S1117q"ERename "sharedPreferences" which hides the field declared at line 72.(½Ìúğ
+W	java:S125‰"<This block of commented-out lines of code should be removed.(’¬…±şÿÿÿÿ
+u
+java:S3252Ê"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8—ÎÌİ.
+R
+java:S1874ˆ"6Remove this use of "ProgressDialog"; it is deprecated.(ú€˜ùşÿÿÿÿ

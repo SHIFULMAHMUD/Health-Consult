@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="shiful.android.healthconsult"
+    package="com.android.healthconsult"
     android:hardwareAccelerated="true"
     android:installLocation="auto">
 
@@ -12,18 +12,47 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".patient.DoctorPrescriptionActivity"></activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".doctor.PatientRequestActivity" />
+        <activity android:name=".doctor.AllAssistantActivity" />
+        <activity android:name=".doctor.AddAssistantActivity" />
+        <activity android:name=".doctor.DoctorActivity" />
+        <activity android:name=".doctor.AppointmentHistoryActivity" />
+        <activity android:name=".prescription.PrescriptionActivity" />
+        <activity android:name=".prescription.PrescriptionDetailsActivity" />
+        <activity android:name=".assistant.AssistantLoginActivity" />
+        <activity android:name=".assistant.AssistantProfileActivity" />
         <activity android:name=".notification.NotificationActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
         <activity android:name=".patient.WebActivity" />
         <activity android:name=".patient.HealthTipsActivity" />
         <activity android:name=".patient.AppointmentHistoryActivity" />
-        <activity android:name=".doctor.PatientHistoryActivity" />
-        <activity android:name=".doctor.AppointmentDetailsActivity" />
-        <activity android:name=".doctor.DoctorProfileUpdateActivity" />
+        <activity android:name=".assistant.PatientHistoryActivity" />
+        <activity android:name=".assistant.AppointmentDetailsActivity" />
+        <activity android:name=".assistant.AssistantProfileUpdateActivity" />
         <activity android:name=".doctor.DoctorProfileActivity" />
         <activity android:name=".doctor.DoctorRegisterActivity" />
         <activity android:name=".doctor.DoctorLoginActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".doctor.AppointmentActivity" />
+        <activity android:name=".assistant.AppointmentActivity" />
         <activity android:name=".patient.AmbulanceActivity" />
         <activity android:name=".patient.DoctorDetailsActivity" />
         <activity android:name=".patient.ViewDoctorActivity" />
@@ -31,9 +60,11 @@
         <activity android:name=".patient.CategoryActivity" />
         <activity android:name=".patient.PatientUpdateProfileActivity" />
         <activity android:name=".patient.PatientProfileActivity" />
-        <activity android:name=".doctor.DoctorActivity" />
+        <activity android:name=".assistant.AssistantActivity" />
         <activity android:name=".patient.PatientRegisterActivity" />
         <activity android:name=".patient.PatientActivity" />
+        <activity android:name=".covidcenter.CovidCenterDetailsActivity" />
+        <activity android:name=".covidcenter.CovidTestCenterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +72,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <service
             android:name=".notification.MyFirebaseService"
             android:exported="false">
@@ -53,12 +89,18 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
 </manifest>

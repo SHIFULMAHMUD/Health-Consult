@@ -1,0 +1,27 @@
+
+n	java:S116"TRename this field "doctor_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ
+I
+java:S1659"'Declare "logout_cv" on a separate line.(Úàèùÿÿÿÿ8ÀÁƒÎİ.
+B
+java:S1659"'Declare "doctor_cv" on a separate line.(Úàèùÿÿÿÿ
+O
+java:S1659"-Declare "prescription_cv" on a separate line.(Úàèùÿÿÿÿ8ÀÁƒÎİ.
+G
+java:S1659",Declare "health_tips_cv" on a separate line.(Úàèùÿÿÿÿ
+s	java:S116"YRename this field "health_tips_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ
+T
+java:S2696€"6Make the enclosing method "static" or remove this set.(é‘8¸…Îİ.
+{	java:S116"aRename this field "patient_covid_check_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ
+o	java:S116"URename this field "history_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ
+{	java:S116"ZRename this field "prescription_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ8ÀÁƒÎİ.
+u	java:S116"TRename this field "logout_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ8ÀÁƒÎİ.
+O
+java:S1659"4Declare "patient_covid_check_cv" on a separate line.(Úàèùÿÿÿÿ
+C
+java:S1659"(Declare "history_cv" on a separate line.(Úàèùÿÿÿÿ
+q	java:S116"WRename this field "ambulance_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ
+o	java:S116"URename this field "profile_cv" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úàèùÿÿÿÿ
+m
+java:S3008"WRename this field "back_pressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ¼ÑÄ
+E
+java:S1659"*Declare "ambulance_cv" on a separate line.(Úàèùÿÿÿÿ

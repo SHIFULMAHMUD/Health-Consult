@@ -76,6 +76,24 @@ android:layout_gravity="center">
             android:textColor="@android:color/white"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:onClick="ShowLoginAssistant"
+        android:layout_width="0dp"
+        android:layout_height="100dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assistant"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
 </LinearLayout>
 
 <Button

@@ -1,0 +1,10 @@
+
+g
+java:S1301î"KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ
+j	java:S116"URename this field "CustomList" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ý–ˆŒ
+N
+java:S1197"8Move the array designator from the variable to the type.(ûÁùÊ
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Õ–°c
+]
+java:S1479$"BReduce the number of non-empty switch cases from 39 to at most 30.(¼œóÛüÿÿÿÿ

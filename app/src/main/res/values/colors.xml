@@ -15,7 +15,10 @@
     <color name="black">#000</color>
     <color name="lightorange">#fdf2df</color>
     <color name="lightorangedark">#ebd6ab</color>
-
+    <color name="agendacolor">#8e9097</color>
+    <color name="timecolor">#000</color>
+    <color name="schedulecolor">#000</color>
+    <color name="colorNavIcon">#dae9f6</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparentWhite">#BBBBBB</color>
 </resources>

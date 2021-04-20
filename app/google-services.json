@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:918829762708:android:9db8cbc9615352b4814c81",
+        "android_client_info": {
+          "package_name": "com.android.healthconsult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918829762708-c1dn93bkast81ts71qumgd81no22kfns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcxy9Cjlj1v16I62fArnhB6nhZwQluAWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918829762708-c1dn93bkast81ts71qumgd81no22kfns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:918829762708:android:c6d1dac531434ab9814c81",
         "android_client_info": {
           "package_name": "shiful.android.healthconsult"

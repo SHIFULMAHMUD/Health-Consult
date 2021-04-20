@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/modifiedEditText"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="35dp"
+                    android:background="#0000"
+                    android:hint="Patient Name"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@color/colorAccent" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtCell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="35dp"
+                    android:background="#0000"
+                    style="@style/modifiedEditText"
+                    android:hint="Patient Cell"
+                    android:inputType="number"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="35dp"
+                    android:background="#0000"
+                    style="@style/modifiedEditText"
+                    android:hint="Age"
+                    android:inputType="number"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@color/colorAccent"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    style="@style/modifiedEditText"
+                    android:layout_marginRight="35dp"
+                    android:background="#0000"
+                    android:focusable="false"
+                    android:hint="Gender"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="35dp"
+                    style="@style/modifiedEditText"
+                    android:background="#0000"
+                    android:focusable="false"
+                    android:hint="Date"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="35dp"
+                    style="@style/modifiedEditText"
+                    android:background="#0000"
+                    android:hint="Weight"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtPulseRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    style="@style/modifiedEditText"
+                    android:layout_marginRight="35dp"
+                    android:background="#0000"
+                    android:hint="Pulse Rate"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@color/colorAccent"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/etxtDisease"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    style="@style/modifiedEditText"
+                    android:layout_marginRight="35dp"
+                    android:background="#0000"
+                    android:hint="Disease"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@color/colorAccent"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="16dp"
+                    android:background="@color/lightorangedark"
+                    android:orientation="vertical">
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/etxtPrescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="Prescription/Medicine Details"
+                        android:inputType="textMultiLine"
+                        android:padding="16dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="16dp"
+                    android:background="@color/lightorangedark"
+                    android:orientation="vertical">
+
+                    <com.android.healthconsult.customfonts.MyEditText
+                        android:id="@+id/etxtGeneralInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="General Info"
+                        android:inputType="textMultiLine"
+                        android:padding="16dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="16dp"
+                    android:background="@color/lightorangedark"
+                    android:orientation="vertical">
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/etxtTest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="Test List"
+                        android:inputType="textMultiLine"
+                        android:padding="16dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <com.android.healthconsult.customfonts.MyTextView
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="60dp"
+                    android:background="@color/colorAccent"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="SAVE"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </FrameLayout>
+</ScrollView>

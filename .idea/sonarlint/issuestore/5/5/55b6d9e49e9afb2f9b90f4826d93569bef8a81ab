@@ -1,0 +1,70 @@
+
+g
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(¼œóÛüÿÿÿÿ
+g
+java:S1301´"KReplace this "switch" statement by "if" statements to increase readability.(¼œóÛüÿÿÿÿ
+g
+java:S1301±"KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ
+
+java:S1192"rDefine a constant instead of duplicating this literal "No Internet Connection or \nThere is an error !!!" 3 times.(¹õÇÿÿÿÿÿ
+g
+java:S1192ñ"PDefine a constant instead of duplicating this literal "Please wait...." 3 times.(¤¾š˜
+`
+java:S1192µ"IDefine a constant instead of duplicating this literal "Rejected" 4 times.(ï‹¹ğ
+l	java:S117÷"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢üÎ˜ûÿÿÿÿ
+l	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²°Õ¸ıÿÿÿÿ
+@
+java:S1659("%Declare "txtCell" on a separate line.(ù‡¥Ğüÿÿÿÿ
+A
+java:S1659("&Declare "txtEmail" on a separate line.(ù‡¥Ğüÿÿÿÿ
+B
+java:S1659("'Declare "txtGender" on a separate line.(ù‡¥Ğüÿÿÿÿ
+@
+java:S1659)"%Declare "getCell" on a separate line.(ĞŞØ„üÿÿÿÿ
+A
+java:S1659)"&Declare "getEmail" on a separate line.(ĞŞØ„üÿÿÿÿ
+B
+java:S1659)"'Declare "getGender" on a separate line.(ĞŞØ„üÿÿÿÿ
+A
+java:S1659)"&Declare "getPhone" on a separate line.(ĞŞØ„üÿÿÿÿ
+@
+java:S1659)"%Declare "txttime" on a separate line.(ĞŞØ„üÿÿÿÿ
+A
+java:S1659)"&Declare "getToken" on a separate line.(ĞŞØ„üÿÿÿÿ
+B
+java:S1659*"'Declare "rejectBtn" on a separate line.(ûë„éıÿÿÿÿ
+:
+java:S1659+"%Declare "txtTime" on a separate line.(ñß$
+;
+java:S1659+"&Declare "txtPlace" on a separate line.(ñß$
+?
+java:S1659-"$Declare "mMonth" on a separate line.(Ë¯Æ¸üÿÿÿÿ
+=
+java:S1659-""Declare "mDay" on a separate line.(Ë¯Æ¸üÿÿÿÿ
+>
+java:S1659-"#Declare "mHour" on a separate line.(Ë¯Æ¸üÿÿÿÿ
+@
+java:S1659-"%Declare "mMinute" on a separate line.(Ë¯Æ¸üÿÿÿÿ
+z
+java:S1845+"eRename field "txtTime" to prevent any misunderstanding/clash with field "txttime" defined on line 41.(ñß$
+L
+java:S1874,"6Remove this use of "ProgressDialog"; it is deprecated.(Ï’Ú
+m
+java:S37760"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¨Œşÿÿÿÿ
+=	java:S131""Add a default case to this switch.(¼œóÛüÿÿÿÿ
+=	java:S131´""Add a default case to this switch.(¼œóÛüÿÿÿÿ
+i	java:S100Ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì¸±øÿÿÿÿ
+R
+java:S1874î"6Remove this use of "ProgressDialog"; it is deprecated.(ú€˜ùşÿÿÿÿ
+I
+java:S1874ñ"2Remove this use of "setMessage"; it is deprecated.(¤¾š˜
+i	java:S100°"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥·Ä³øÿÿÿÿ
+R
+java:S1874º"6Remove this use of "ProgressDialog"; it is deprecated.(ú€˜ùşÿÿÿÿ
+I
+java:S1874½"2Remove this use of "setMessage"; it is deprecated.(¤¾š˜
+i	java:S100÷"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢üÎ˜ûÿÿÿÿ
+R
+java:S1874ı"6Remove this use of "ProgressDialog"; it is deprecated.(ú€˜ùşÿÿÿÿ
+I
+java:S1874ÿ"2Remove this use of "setMessage"; it is deprecated.(¤¾š˜

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patient.PatientProfileActivity"
+    android:background="#D3D3D3"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_layout">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorAccent"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_layout"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp">
+            <LinearLayout
+                android:background="@drawable/gradientbackground"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_marginTop="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/profile_image"
+                    android:background="@drawable/profile"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    />
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/profile_name"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:textSize="22sp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp">
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/image_ast_cell"
+                    android:src="@drawable/ic_phone_black_24dp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/image_ast_cell"
+                    android:id="@+id/assistant_cell_tv"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:text="Mobile Number :"/>
+                <TextView
+                    android:layout_toRightOf="@+id/assistant_cell_tv"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:id="@+id/profile_assistant_cell"
+                    android:textColor="@android:color/black"
+                    />
+            </RelativeLayout>
+            <View style="@style/proifleDetailsView" />
+
+
+
+            <RelativeLayout
+                android:paddingLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/image_mail"
+                    android:src="@drawable/ic_person_black_24dp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:id="@+id/heading_mail"
+                    android:textColor="@android:color/black"
+                    android:layout_toRightOf="@+id/image_mail"
+                    android:text="Doctor Name :"/>
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:gravity="center"
+                    android:id="@+id/profile_doc_name"
+                    android:textColor="@android:color/black"
+                    android:layout_toRightOf="@+id/heading_mail"
+                    />
+            </RelativeLayout>
+            <View style="@style/proifleDetailsView" />
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/image_cell"
+                    android:src="@drawable/ic_device"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/image_cell"
+                    android:id="@+id/heading_cell"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:text="Doctor Phone :"/>
+                <TextView
+                    android:layout_toRightOf="@+id/heading_cell"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:autoLink="phone"
+                    android:id="@+id/profile_doctor_cell"
+                    android:textColor="@android:color/black"
+                    />
+            </RelativeLayout>
+            <View style="@style/proifleDetailsView" />
+        </LinearLayout>
+    </LinearLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

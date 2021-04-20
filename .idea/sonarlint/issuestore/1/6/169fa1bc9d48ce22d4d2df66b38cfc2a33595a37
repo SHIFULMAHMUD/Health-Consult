@@ -1,0 +1,13 @@
+
+J
+java:S1172?"(Remove this unused method parameter "v".(ÌãÊ¢ÿÿÿÿÿ8ÿ·ÊæÛ.
+C
+java:S1172"(Remove this unused method parameter "v".(ß§£ªÿÿÿÿÿ
+b	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ÈÔ"
+c	java:S100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÝÞ²ó
+>
+java:S1172:"(Remove this unused method parameter "v".(ÝÞ²ó
+=
+java:S11725"(Remove this unused method parameter "v".(…ÈÔ"
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß§£ªÿÿÿÿÿ
+o	java:S100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌãÊ¢ÿÿÿÿÿ8ÿ·ÊæÛ.

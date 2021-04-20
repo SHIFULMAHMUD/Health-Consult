@@ -1,0 +1,21 @@
+
+m
+java:S3008"WRename this field "back_pressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ¼ÑÄ
+F
+java:S1659"0Declare "assistant_cardview" on a separate line.(ş«†™
+C
+java:S1659"-Declare "logout_cardview" on a separate line.(ş«†™
+I
+java:S1659"3Declare "allassistant_cardview" on a separate line.(ş«†™
+H
+java:S1659"2Declare "patient_req_cardview" on a separate line.(ş«†™
+I
+java:S1659"3Declare "prescription_cardview" on a separate line.(ş«†™
+o	java:S116"ZRename this field "doctor_cardview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş«†™
+r	java:S116"]Rename this field "assistant_cardview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş«†™
+o	java:S116"ZRename this field "logout_cardview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş«†™
+u	java:S116"`Rename this field "allassistant_cardview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş«†™
+t	java:S116"_Rename this field "patient_req_cardview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş«†™
+u	java:S116"`Rename this field "prescription_cardview" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş«†™
+L
+java:S2696W"6Make the enclosing method "static" or remove this set.(é‘

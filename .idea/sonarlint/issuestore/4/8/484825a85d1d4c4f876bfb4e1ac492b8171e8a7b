@@ -1,0 +1,89 @@
+
+Z
+java:S1197:"8Move the array designator from the variable to the type.(š òÙüÿÿÿÿ8ÖŒ—Îİ.
+O
+java:S1874p"2Remove this use of "setMessage"; it is deprecated.(¤¾š˜8³ùÌĞİ.
+Z
+java:S11972"8Move the array designator from the variable to the type.(¼³à‡ÿÿÿÿÿ8ÖŒ—Îİ.
+^	java:S125 "<This block of commented-out lines of code should be removed.(Àµ®ãüÿÿÿÿ8³ùÌĞİ.
+v
+java:S11048"YMake PatientWeight a static final constant or non-public and provide accessors if needed.(èû¤¦8ÖŒ—Îİ.
+y	java:S1160"XRename this field "PatientGender" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…¹˜‚üÿÿÿÿ8ÖŒ—Îİ.
+Z
+java:S11975"8Move the array designator from the variable to the type.(¦ø¡­ÿÿÿÿÿ8ÖŒ—Îİ.
+x
+java:S11047"VMake PatientAge a static final constant or non-public and provide accessors if needed.(±ÀØ–üÿÿÿÿ8ÖŒ—Îİ.
+t	java:S1168"XRename this field "PatientWeight" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èû¤¦8ÖŒ—Îİ.
+	java:S1163"^Rename this field "PatientPrescription" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó¶¾¦üÿÿÿÿ8ÖŒ—Îİ.
+ˆ
+java:S4165u"kRemove this useless assignment; "getSearchText" already holds the assigned value along all execution paths.(¯ã¨œ8³ùÌĞİ.
+s
+java:S11044"WMake PatientInfo a static final constant or non-public and provide accessors if needed.(ú…ºE8ÖŒ—Îİ.
+S
+java:S1874o"6Remove this use of "ProgressDialog"; it is deprecated.(ü€ü˜8³ùÌĞİ.
+U
+java:S11979"8Move the array designator from the variable to the type.(˜Ğµü8ÖŒ—Îİ.
+r	java:S1161"VRename this field "PatientDate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÆÊü8ÖŒ—Îİ.
+u	java:S116;"YRename this field "PatientDisease" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷¾©Ì8ÖŒ—Îİ.
+z
+java:S11045"XMake drSpeciality a static final constant or non-public and provide accessors if needed.(¦ø¡­ÿÿÿÿÿ8ÖŒ—Îİ.
+m	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µª^8³ùÌĞİ.
+S
+java:S1874*"6Remove this use of "ProgressDialog"; it is deprecated.(Ï’Ú8ÖŒ—Îİ.
+U
+java:S1197/"8Move the array designator from the variable to the type.(ª¶Ú8ÖŒ—Îİ.
+n
+java:S1301ù"KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ8­Å¡Ñİ.
+w
+java:S1104;"ZMake PatientDisease a static final constant or non-public and provide accessors if needed.(÷¾©Ì8ÖŒ—Îİ.
+U
+java:S11976"8Move the array designator from the variable to the type.(¯˜ìŠ8ÖŒ—Îİ.
+y
+java:S1104:"WMake PatientTest a static final constant or non-public and provide accessors if needed.(š òÙüÿÿÿÿ8ÖŒ—Îİ.
+s	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÈİ…üÿÿÿÿ8³ùÌĞİ.
+{
+java:S11040"YMake PatientGender a static final constant or non-public and provide accessors if needed.(…¹˜‚üÿÿÿÿ8ÖŒ—Îİ.
+U
+java:S1197;"8Move the array designator from the variable to the type.(÷¾©Ì8ÖŒ—Îİ.
+q	java:S116("URename this field "CustomList" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ–ˆŒ8ÖŒ—Îİ.
+t	java:S116-"SRename this field "MAX_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”üÇøşÿÿÿÿ8ÖŒ—Îİ.
+r	java:S116/"VRename this field "PatientName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª¶Ú8ÖŒ—Îİ.
+q	java:S1164"VRename this field "PatientInfo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú…ºE8ÖŒ—Îİ.
+s	java:S117¯"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ÎşÊÿÿÿÿÿ8³ùÌĞİ.
+s	java:S1169"WRename this field "PatientPulse" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ğµü8ÖŒ—Îİ.
+t
+java:S11041"WMake PatientDate a static final constant or non-public and provide accessors if needed.(åÆÊü8ÖŒ—Îİ.
+t
+java:S11042"RMake drCell a static final constant or non-public and provide accessors if needed.(¼³à‡ÿÿÿÿÿ8ÖŒ—Îİ.
+U
+java:S11971"8Move the array designator from the variable to the type.(åÆÊü8ÖŒ—Îİ.
+Z
+java:S11973"8Move the array designator from the variable to the type.(ó¶¾¦üÿÿÿÿ8ÖŒ—Îİ.
+t	java:S116+"SRename this field "UserCell" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÃ ‘ûÿÿÿÿ8ÖŒ—Îİ.
+t
+java:S1104/"WMake PatientName a static final constant or non-public and provide accessors if needed.(ª¶Ú8ÖŒ—Îİ.
+v	java:S1167"URename this field "PatientAge" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ÀØ–üÿÿÿÿ8ÖŒ—Îİ.
+m	java:S117°"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤Ú° 8³ùÌĞİ.
+
+java:S11043"_Make PatientPrescription a static final constant or non-public and provide accessors if needed.(ó¶¾¦üÿÿÿÿ8ÖŒ—Îİ.
+Z
+java:S11970"8Move the array designator from the variable to the type.(…¹˜‚üÿÿÿÿ8ÖŒ—Îİ.
+Z
+java:S11977"8Move the array designator from the variable to the type.(±ÀØ–üÿÿÿÿ8ÖŒ—Îİ.
+w	java:S116:"VRename this field "PatientTest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š òÙüÿÿÿÿ8ÖŒ—Îİ.
+U
+java:S1197."8Move the array designator from the variable to the type.(œ¦ Î8ÖŒ—Îİ.
+u
+java:S11049"XMake PatientPulse a static final constant or non-public and provide accessors if needed.(˜Ğµü8ÖŒ—Îİ.
+o
+java:S1104."RMake drName a static final constant or non-public and provide accessors if needed.(œ¦ Î8ÖŒ—Îİ.
+Y	java:S125¢"<This block of commented-out lines of code should be removed.(›÷÷¨8³ùÌĞİ.
+w
+java:S2293˜"YReplace the type specification in this constructor call with the diamond operator ("<>").(èÒ’8³ùÌĞİ.
+s	java:S117©"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÇÏïûÿÿÿÿ8³ùÌĞİ.
+x
+java:S11046"[Make drQualification a static final constant or non-public and provide accessors if needed.(¯˜ìŠ8ÖŒ—Îİ.
+T
+java:S11974"8Move the array designator from the variable to the type.(ú…ºE8ÖŒ—Îİ.
+U
+java:S11978"8Move the array designator from the variable to the type.(èû¤¦8ÖŒ—Îİ.

@@ -75,7 +75,7 @@
                             <ImageView
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:background="@drawable/man">
+                                android:background="@drawable/woman">
 
                             </ImageView>
 
@@ -349,7 +349,104 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/prescription_cv"
+                    android:layout_rowWeight="1"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="#e4bfef"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="6dp">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#CA6DDA"
+                            android:gravity="center"
+                            android:layout_weight="1">
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/prescription"></ImageView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#5A0E67"
+                            android:gravity="center"
+                            android:layout_weight="0.5">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prescription"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:textSize="20sp"></TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/logout_cv"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="#975550"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#975550"
+                            android:gravity="center"
+                            android:layout_weight="1">
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/exit"></ImageView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#51110C"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_weight="0.5">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Logout"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="20sp"></TextView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </GridLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

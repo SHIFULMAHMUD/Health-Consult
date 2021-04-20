@@ -1,0 +1,22 @@
+
+M
+java:S18746"7Remove this use of "setSavePassword"; it is deprecated.(‘òî™
+`
+java:S1874G"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ï“À¯
+f
+java:S1301["KReplace this "switch" statement by "if" statements to increase readability.(øå´¡ÿÿÿÿÿ
+R
+java:S18747"7Remove this use of "setSaveFormData"; it is deprecated.(ßŒ½ôûÿÿÿÿ
+f	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹ıÔ
+Q
+java:S1874>"6Remove this use of "setColorFilter"; it is deprecated.(Ş¨Ÿ§ùÿÿÿÿ
+Q
+java:S18744"6Remove this use of "NARROW_COLUMNS"; it is deprecated.(…–ßµşÿÿÿÿ
+\
+java:S18748"ARemove this use of "setEnableSmoothTransition"; it is deprecated.(•×±Íıÿÿÿÿ
+r
+java:S1104"WMake progressBar a static final constant or non-public and provide accessors if needed.(ûÇâàùÿÿÿÿ
+O
+java:S1874/"9Remove this use of "setRenderPriority"; it is deprecated.(¤¿û
+P
+java:S1161G":Add the "@Override" annotation above this method signature(Ï“À¯
